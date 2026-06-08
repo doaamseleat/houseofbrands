@@ -110,6 +110,82 @@
             color: black; transform: rotate(-30deg); white-space: nowrap;
         }
         .wm-daoline { color: #d214a1; }
+
+
+        /* Robust print fix: build a dedicated print area so hidden tabs/overflow never create blank pages */
+        #printArea { display: none; }
+
+        @media print {
+            body.print-lab-mode > *:not(#printArea) {
+                display: none !important;
+            }
+            body.print-lab-mode #printArea {
+                display: block !important;
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+                background: white !important;
+                color: #0f172a !important;
+                direction: rtl !important;
+                font-family: 'Cairo', Arial, sans-serif !important;
+            }
+            body.print-lab-mode #printArea .print-section {
+                display: block !important;
+                visibility: visible !important;
+                width: 100% !important;
+                height: auto !important;
+                overflow: visible !important;
+                page-break-after: always;
+                break-after: page;
+            }
+            body.print-lab-mode #printArea .print-section:last-child {
+                page-break-after: auto;
+                break-after: auto;
+            }
+            body.print-lab-mode #printArea .presentation-card,
+            body.print-lab-mode #printArea .print-container {
+                display: block !important;
+                visibility: visible !important;
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+                margin: 0 0 1rem 0 !important;
+                padding: 1rem !important;
+                overflow: visible !important;
+                background: white !important;
+                color: #0f172a !important;
+            }
+            body.print-lab-mode #printArea .bg-slate-800,
+            body.print-lab-mode #printArea .bg-slate-700,
+            body.print-lab-mode #printArea .bg-slate-900,
+            body.print-lab-mode #printArea .bg-slate-800\/60 {
+                background: #ffffff !important;
+                color: #0f172a !important;
+            }
+            body.print-lab-mode #printArea .text-white,
+            body.print-lab-mode #printArea .text-slate-300,
+            body.print-lab-mode #printArea .text-slate-400 {
+                color: #0f172a !important;
+            }
+            body.print-lab-mode #printArea textarea,
+            body.print-lab-mode #printArea input,
+            body.print-lab-mode #printArea select {
+                display: block !important;
+                width: 100% !important;
+                min-height: 70px !important;
+                border: 1px solid #94a3b8 !important;
+                background: white !important;
+                color: black !important;
+                overflow: visible !important;
+                white-space: pre-wrap !important;
+            }
+            body.print-lab-mode #printArea .no-print,
+            body.print-lab-mode #printArea button,
+            body.print-lab-mode #printArea .slide-number {
+                display: none !important;
+            }
+        }
+
     </style>
 </head>
 <body class="text-slate-800 antialiased">
@@ -1116,11 +1192,75 @@
             }
         }
 
-        function printApplication() {
-            document.body.classList.add('print-lab-mode');
-            document.body.classList.remove('print-all-mode');
-            window.print();
+        function copyFormValues(source, clone) {
+            const sourceFields = source.querySelectorAll('input, textarea, select');
+            const cloneFields = clone.querySelectorAll('input, textarea, select');
+            sourceFields.forEach((field, index) => {
+                const clonedField = cloneFields[index];
+                if (!clonedField) return;
+
+                if (field.tagName === 'TEXTAREA') {
+                    clonedField.textContent = field.value;
+                    clonedField.value = field.value;
+                } else if (field.tagName === 'SELECT') {
+                    clonedField.value = field.value;
+                    Array.from(clonedField.options).forEach(option => {
+                        option.selected = option.value === field.value;
+                    });
+                } else if (field.type === 'checkbox' || field.type === 'radio') {
+                    clonedField.checked = field.checked;
+                    if (field.checked) clonedField.setAttribute('checked', 'checked');
+                    else clonedField.removeAttribute('checked');
+                } else {
+                    clonedField.setAttribute('value', field.value);
+                    clonedField.value = field.value;
+                }
+            });
         }
+
+        function printApplication() {
+            document.body.classList.remove('print-all-mode');
+
+            const oldPrintArea = document.getElementById('printArea');
+            if (oldPrintArea) oldPrintArea.remove();
+
+            const printArea = document.createElement('div');
+            printArea.id = 'printArea';
+
+            const countryApplication = document.getElementById('countryApplication');
+            const homeworkWorksheet = document.getElementById('homeworkWorksheet');
+
+            if (countryApplication) {
+                const countryClone = countryApplication.cloneNode(true);
+                copyFormValues(countryApplication, countryClone);
+                const wrapper = document.createElement('div');
+                wrapper.className = 'print-section';
+                wrapper.appendChild(countryClone);
+                printArea.appendChild(wrapper);
+            }
+
+            if (homeworkWorksheet) {
+                const homeworkClone = homeworkWorksheet.cloneNode(true);
+                copyFormValues(homeworkWorksheet, homeworkClone);
+                const wrapper = document.createElement('div');
+                wrapper.className = 'print-section';
+                wrapper.appendChild(homeworkClone);
+                printArea.appendChild(wrapper);
+            }
+
+            document.body.appendChild(printArea);
+            document.body.classList.add('print-lab-mode');
+
+            setTimeout(() => {
+                window.print();
+            }, 150);
+        }
+
+        window.addEventListener('afterprint', () => {
+            document.body.classList.remove('print-lab-mode');
+            const printArea = document.getElementById('printArea');
+            if (printArea) printArea.remove();
+        });
 
         function printAll() {
             document.body.classList.add('print-all-mode');
