@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House of Brands Course | DAOLINE</title>
+    <title>House of Brands Manual | DAOLINE</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,7 +46,6 @@
         }
         .input-field:focus { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2); }
 
-        /* Twitter UI styles for Homework */
         .tweet-input-container { position: relative; }
         .tweet-input {
             width: 100%; padding: 1rem; border: 2px solid #e2e8f0; border-radius: 1rem;
@@ -56,7 +55,6 @@
         .tweet-input:focus { border-color: #38bdf8; box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1); }
         .char-counter { position: absolute; bottom: 15px; left: 15px; font-size: 0.8rem; color: #64748b; font-weight: bold; }
         
-        /* Tweet Card for Examples */
         .tweet-card { position: relative; padding-right: 2rem; border-right: 3px solid #e2e8f0; margin-bottom: 1.5rem; }
         .tweet-card::before {
             content: ''; position: absolute; right: -8px; top: 0; width: 13px; height: 13px; 
@@ -64,39 +62,35 @@
         }
         .quote-tweet { margin-top: 1rem; border: 1px solid #cbd5e1; border-radius: 0.75rem; padding: 1rem; background-color: #f8fafc; }
 
-        /* Print Settings for Dual Modes */
+        .presentation-card {
+            background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+            margin-bottom: 2rem; border-top: 4px solid #1e3a8a; position: relative; overflow: hidden;
+        }
+        .slide-number {
+            position: absolute; top: 0; left: 0; background: #1e3a8a; color: white; 
+            padding: 0.5rem 1rem; border-bottom-right-radius: 1rem; font-weight: bold; font-family: 'Readex Pro', sans-serif;
+        }
+
         @media print {
             @page { margin: 1cm; }
             body { background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .no-print, aside, .mobile-header { display: none !important; }
+            .no-print, aside, .mobile-header, .slide-number { display: none !important; }
             body, .flex.h-screen { height: auto !important; overflow: visible !important; display: block !important; }
             main { padding: 0 !important; overflow: visible !important; height: auto !important; }
             
-            /* Print Homework Only (Default Print Mode) */
-            body.print-hw-mode .tab-content { display: none !important; }
-            body.print-hw-mode section#homework { display: block !important; }
+            /* Print Modes */
+            body.print-lab-mode section.tab-content { display: none !important; }
+            body.print-lab-mode section#lab { display: block !important; }
             
-            /* Print All Mode (For studying) */
-            body.print-all-mode .tab-content { 
-                display: block !important; 
-                opacity: 1 !important; 
-                transform: none !important; 
-                margin-bottom: 3rem; 
-                page-break-after: always; 
-            }
-            body.print-all-mode section#homework { page-break-after: avoid; }
+            body.print-all-mode section.tab-content { display: block !important; page-break-after: always; margin-bottom: 2rem; }
+            body.print-all-mode section#lab { page-break-after: avoid; }
             
             .print-container { box-shadow: none !important; border: none !important; padding: 0 !important; }
-            .page-break-inside-avoid { page-break-inside: avoid; break-inside: avoid; }
-            
-            /* Expand textareas fully for print */
-            textarea { resize: none !important; overflow: hidden !important; border: 1px solid #ccc !important; }
-            
-            /* تقليل المسافات في الطباعة لمنع الفراغات */
-            .mb-10 { margin-bottom: 1.5rem !important; }
-            
-            /* ضمان ظهور العلامة المائية في كل الصفحات */
+            .presentation-card { box-shadow: none !important; border: 1px solid #e2e8f0 !important; page-break-inside: avoid; }
+            .page-break-inside-avoid { page-break-inside: avoid; }
+            .page-break-before { page-break-before: always; }
             .watermarks-container { display: block !important; }
+            textarea { resize: none !important; overflow: hidden !important; border: 1px solid #ccc !important; }
         }
 
         .watermarks-container {
@@ -110,18 +104,18 @@
         .wm-daoline { color: #d214a1; }
     </style>
 </head>
-<body class="text-slate-800 antialiased print-hw-mode">
+<body class="text-slate-800 antialiased">
 
     <div class="watermarks-container">
-        <!-- تم تقليل العلامات المائية لـ 2 فقط مع إضافة رقم الهاتف -->
-        <div class="wm-item text-8xl top-1/4 right-10"><span class="wm-daoline">D</span>AOLINE <br><span class="text-3xl">By Doaa Seleat</span><br><span class="text-2xl font-bold">01005479564</span></div>
-        <div class="wm-item text-8xl bottom-1/4 left-10"><span class="wm-daoline">D</span>AOLINE <br><span class="text-3xl">daolinedigital.com</span><br><span class="text-2xl font-bold">01005479564</span></div>
+        <div class="wm-item text-8xl top-20 right-10"><span class="wm-daoline">D</span>AOLINE <br><span class="text-3xl">By Doaa Seleat</span></div>
+        <div class="wm-item text-8xl top-1/3 left-10"><span class="wm-daoline">D</span>AOLINE <br><span class="text-3xl">daolinedigital.com</span></div>
+        <div class="wm-item text-8xl bottom-1/4 right-1/4"><span class="wm-daoline">D</span>AOLINE <br><span class="text-3xl">Content System 2026</span></div>
+        <div class="wm-item text-8xl bottom-10 left-20"><span class="wm-daoline">D</span>AOLINE <br><span class="text-3xl">By Doaa Seleat</span></div>
     </div>
 
     <div class="flex h-screen overflow-hidden">
         
-        <!-- Sidebar Navigation -->
-        <aside class="w-72 bg-brand-dark text-white flex flex-col h-full shadow-2xl z-20 hidden md:flex no-print">
+        <aside class="w-72 bg-brand-dark text-white flex flex-col h-full shadow-2xl z-20 hidden md:flex no-print flex-shrink-0">
             <div class="p-6 border-b border-slate-700 text-center">
                 <div class="flex items-center justify-center gap-1 font-sans mb-4 bg-white p-3 rounded-xl shadow-inner w-full max-w-[200px] mx-auto">
                     <div class="bg-brand-daoline text-white font-black text-3xl flex items-center justify-center w-10 h-10" style="border-radius: 2px;">D</div>
@@ -130,25 +124,25 @@
                         <span class="text-[0.5rem] font-bold tracking-widest text-black ml-0.5 uppercase mt-0.5">Social Media Agency</span>
                     </div>
                 </div>
-                <h2 class="text-lg font-bold text-slate-200">مساحة عمل حياة المدينة</h2>
-                <p class="text-xs text-brand-secondary mt-1">House of Brands Course</p>
+                <h2 class="text-lg font-bold text-slate-200">دليل نظام المحتوى</h2>
+                <p class="text-xs text-brand-secondary mt-1">Lecture 02 | X 2026</p>
             </div>
             
             <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
-                <button onclick="switchTab('architecture')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg bg-brand-primary text-white transition-colors tab-btn" data-target="architecture">
-                    <i class="fa-solid fa-sitemap w-5 text-center"></i> الهيكلة (40 علامة)
+                <button onclick="switchTab('system')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg bg-brand-primary text-white transition-colors tab-btn" data-target="system">
+                    <i class="fa-solid fa-shapes w-5 text-center"></i> المنظومة والأشكال
                 </button>
-                <button onclick="switchTab('persona')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn" data-target="persona">
-                    <i class="fa-solid fa-masks-theater w-5 text-center"></i> النبرة والشخصية (22 دولة)
+                <button onclick="switchTab('strategies')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn" data-target="strategies">
+                    <i class="fa-solid fa-image w-5 text-center"></i> استراتيجية الفيجوال والفيديو
                 </button>
-                <button onclick="switchTab('mechanics')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn" data-target="mechanics">
-                    <i class="fa-solid fa-lightbulb w-5 text-center text-brand-accent"></i> تكنيك النشر المتقاطع
+                <button onclick="switchTab('architecture')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn" data-target="architecture">
+                    <i class="fa-solid fa-sitemap w-5 text-center"></i> الهيكلة والـ 22 دولة
                 </button>
-                <button onclick="switchTab('content-plan')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn" data-target="content-plan">
-                    <i class="fa-solid fa-calendar-days w-5 text-center"></i> خطة المحتوى (يونيو 2026)
+                <button onclick="switchTab('cross_promo')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn" data-target="cross_promo">
+                    <i class="fa-solid fa-calendar-days w-5 text-center"></i> التقويم والنشر المتقاطع
                 </button>
-                <button onclick="switchTab('homework')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn border border-brand-secondary/30 mt-4" data-target="homework">
-                    <i class="fa-solid fa-laptop-code w-5 text-center text-brand-secondary"></i> التطبيق العملي والمختبر
+                <button onclick="switchTab('lab')" class="w-full flex items-center gap-3 text-right px-4 py-3 rounded-lg hover:bg-slate-800 text-slate-300 transition-colors tab-btn border border-brand-secondary/30 mt-4" data-target="lab">
+                    <i class="fa-solid fa-laptop-code w-5 text-center text-brand-secondary"></i> مختبر التفاعل (Workshops)
                 </button>
             </nav>
             <div class="p-4 border-t border-slate-700 text-center">
@@ -156,9 +150,8 @@
             </div>
         </aside>
 
-        <main class="flex-1 h-full overflow-y-auto bg-brand-light p-4 md:p-8 relative">
+        <main class="flex-1 h-full overflow-y-auto bg-slate-50 p-4 md:p-8 relative">
             
-            <!-- Mobile Header -->
             <div class="mobile-header md:hidden bg-white shadow-sm p-4 rounded-xl mb-4 flex flex-col gap-4 no-print border border-slate-200">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-1 font-sans">
@@ -169,552 +162,638 @@
                     </div>
                 </div>
                 <select onchange="switchTab(this.value)" class="w-full bg-slate-50 text-slate-800 p-3 rounded-lg border border-slate-300 outline-none font-bold">
-                    <option value="architecture">الهيكلة (40 علامة)</option>
-                    <option value="persona">النبرة والشخصية (22 دولة)</option>
-                    <option value="mechanics">تكنيك النشر المتقاطع</option>
-                    <option value="content-plan">خطة المحتوى (يونيو 2026)</option>
-                    <option value="homework">التطبيق العملي والمختبر</option>
+                    <option value="system">المنظومة والأشكال</option>
+                    <option value="strategies">استراتيجية الفيجوال والفيديو</option>
+                    <option value="architecture">الهيكلة والـ 22 دولة</option>
+                    <option value="cross_promo">التقويم والنشر المتقاطع</option>
+                    <option value="lab">مختبر التفاعل (Workshops)</option>
                 </select>
             </div>
 
-            <!-- TAB 1: Architecture -->
-            <section id="architecture" class="tab-content active">
-                <div class="mb-8">
-                    <h1 class="text-3xl font-extrabold text-brand-dark mb-2">استراتيجية الـ 40 علامة (House of Brands)</h1>
-                    <p class="text-slate-600 text-lg">كيف ندير شبكة واسعة دون أن نفقد التركيز أو نقع في فخ التكرار (Spam).</p>
+            <section id="system" class="tab-content active">
+                <div class="mb-10 text-center md:text-right">
+                    <span class="bg-brand-daoline text-white px-3 py-1 rounded-full text-sm font-bold shadow-sm inline-block mb-3">Lecture 02</span>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-4 leading-tight">من التغريدة الواحدة <br>إلى <span class="text-brand-daoline">منظومة محتوى مؤثر</span></h1>
+                    <p class="text-lg text-slate-600 max-w-3xl">التغريدة تفتح الباب، لكن المنظومة تبني الثقة. دليل إدارة Content System كامل على X 2026 عبر ملف البطالة وسوق العمل وتكلفة المعيشة في الشرق الأوسط.</p>
                 </div>
 
-                <div class="grid lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-brand-primary hover:shadow-md transition">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-crown"></i></div>
-                            <div>
-                                <h3 class="font-bold text-xl text-slate-800">العلامة الأم (The Hub)</h3>
-                                <a href="https://x.com/hayat_almadinah" target="_blank" class="text-brand-secondary hover:underline text-sm dir-ltr">@hayat_almadinah</a>
+                <div class="presentation-card">
+                    <div class="slide-number">01</div>
+                    <h3 class="text-xl font-bold text-brand-primary mb-4">لماذا لا تكفي التغريدة الواحدة؟ (A Post is not a Strategy)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="mb-3 font-semibold text-slate-800">التغريدة الواحدة تؤدي وظائف سريعة:</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">جذب انتباه (Hook)</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">طرح تجربة شخصية</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">طرح سؤال</span>
                             </div>
+                            <p class="font-bold text-red-600 border-r-4 border-red-500 pr-3 py-2 bg-red-50">لكنها لا تكفي وحدها لبناء: شرح عميق، ثقة، مجتمع، قاعدة بيانات جماهيرية، أو شراكات استراتيجية حول ملف البطالة والعمل.</p>
                         </div>
-                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">منظمة غير ربحية تركز على الاستثمار المؤثر، هي الدستور والمظلة التي تجمع كل الحسابات. تنشر التقارير الكبرى والرؤية الاستراتيجية.</p>
-                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
-                            <span class="text-xs font-bold text-slate-500 uppercase">الهدف الرئيسي</span>
-                            <p class="font-semibold text-brand-primary text-sm mt-1">بناء الوعي وتوجيه الاستثمار المجتمعي.</p>
+                        <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-brand-secondary mb-2"><i class="fa-solid fa-lightbulb"></i> المبدأ المهني:</h4>
+                            <p class="text-sm text-slate-700 leading-relaxed">
+                                في 2026، منصة X هي "نظام بيئي" (Ecosystem) متكامل. التعامل معها كمنصة للتغريدات النصية فقط يُفقد العلامة التجارية قدرتها على التأثير العميق وصناعة المرجعية. نحتاج لربط سؤال البطالة والرواتب بـ Thread, Visual, Video, Article حتى يتحول من سؤال عابر إلى ملف تحريري مستمر.
+                            </p>
                         </div>
                     </div>
+                </div>
 
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-brand-secondary hover:shadow-md transition">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-brand-secondary text-white rounded-full flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-                            <div>
-                                <h3 class="font-bold text-xl text-slate-800">العلامة التفسيرية</h3>
-                                <a href="https://x.com/HayatAlwasat" target="_blank" class="text-brand-secondary hover:underline text-sm dir-ltr">@HayatAlwasat</a>
-                            </div>
-                        </div>
-                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">علامة صحافية رقمية سياسية دولية. تأخذ تقارير وأبحاث "حياة المدينة" وتحولها إلى قصص صحفية، تحليلات، وفيديوهات قصيرة.</p>
-                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
-                            <span class="text-xs font-bold text-slate-500 uppercase">الهدف الرئيسي</span>
-                            <p class="font-semibold text-brand-secondary text-sm mt-1">تفسير الأخبار، الشرح، وصناعة رأي عام.</p>
-                        </div>
+                <div class="presentation-card">
+                    <div class="slide-number">02</div>
+                    <h3 class="text-xl font-bold text-brand-primary mb-4">مصفوفة أشكال المحتوى (Content Formats Matrix)</h3>
+                    <p class="text-slate-600 mb-6">كل شكل محتوى له وظيفة محددة، الخلط بينها يؤدي لنتائج عكسية. ابدأ بسؤال: <strong>ماذا أريد من الجمهور أن يفعل؟</strong></p>
+                    
+                    <div class="overflow-x-auto mb-8">
+                        <table class="w-full text-sm text-right border-collapse border border-slate-200">
+                            <thead>
+                                <tr class="bg-slate-100">
+                                    <th class="border border-slate-200 p-3 w-1/4">شكل المحتوى</th>
+                                    <th class="border border-slate-200 p-3">الوظيفة الاستراتيجية</th>
+                                    <th class="border border-slate-200 p-3">مؤشر النجاح (KPI)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="border border-slate-200 p-3 font-bold bg-white text-brand-primary">Single Post</td><td class="border border-slate-200 p-3 bg-white">جذب الانتباه السريع (Hook)</td><td class="border border-slate-200 p-3 bg-white">الردود (Replies)</td></tr>
+                                <tr><td class="border border-slate-200 p-3 font-bold bg-slate-50 text-brand-primary">Thread</td><td class="border border-slate-200 p-3 bg-slate-50">الشرح والتفصيل المنهجي</td><td class="border border-slate-200 p-3 bg-slate-50">الاكتمال والحفظ (Bookmarks)</td></tr>
+                                <tr><td class="border border-slate-200 p-3 font-bold bg-white text-brand-primary">Visual</td><td class="border border-slate-200 p-3 bg-white">تبسيط المعطيات وحفظها في الذاكرة</td><td class="border border-slate-200 p-3 bg-white">الحفظ وإعادة النشر (Saves/Shares)</td></tr>
+                                <tr><td class="border border-slate-200 p-3 font-bold bg-slate-50 text-brand-primary">Video</td><td class="border border-slate-200 p-3 bg-slate-50">الاكتشاف والانتشار السريع</td><td class="border border-slate-200 p-3 bg-slate-50">وقت المشاهدة (Watch Time)</td></tr>
+                                <tr><td class="border border-slate-200 p-3 font-bold bg-white text-brand-primary">Article / Long-form</td><td class="border border-slate-200 p-3 bg-white">بناء المرجعية والسلطة المعرفية</td><td class="border border-slate-200 p-3 bg-white">النقرات ووقت القراءة</td></tr>
+                                <tr><td class="border border-slate-200 p-3 font-bold bg-slate-50 text-brand-primary">Space</td><td class="border border-slate-200 p-3 bg-slate-50">بناء العلاقة وصناعة المجتمع</td><td class="border border-slate-200 p-3 bg-slate-50">حجم الحضور والتفاعل الصوتي</td></tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-emerald-500 hover:shadow-md transition">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center text-xl shadow-md"><i class="fa-solid fa-map-location-dot"></i></div>
-                            <div>
-                                <h3 class="font-bold text-xl text-slate-800">العلامات الفرعية (الدول)</h3>
-                                <span class="text-emerald-600 text-sm font-semibold">حياة مصر، حياة السعودية، ...</span>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 shadow-sm">
+                        <h4 class="font-bold text-brand-primary mb-4 border-b-2 border-brand-primary/10 pb-2"><i class="fa-solid fa-briefcase mr-2 text-brand-accent"></i> مثال عملي ثابت: قضية "البطالة في الشرق الأوسط"</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm font-readex">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-r-4 border-blue-500">
+                                <span class="block text-[11px] font-bold text-white bg-blue-500 px-2 py-1 rounded mb-2 w-max">الهدف: جذب سريع</span>
+                                <strong class="text-brand-dark block text-base mb-1">Post + Hook قوي</strong>
+                                <p class="text-slate-600">سؤال مباشر عن الراتب والبطالة يفتح تجارب الجمهور.</p>
                             </div>
-                        </div>
-                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">حسابات جغرافية مستقلة. لا تنشر نفس الخبر! بل تأخذ موضوعاً من "حياة الوسط" وتعطيه <strong>الزاوية المحلية</strong> التي تهم المواطن في بلده.</p>
-                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
-                            <span class="text-xs font-bold text-slate-500 uppercase">الهدف الرئيسي</span>
-                            <p class="font-semibold text-emerald-600 text-sm mt-1">الارتباط بالمجتمع المحلي والاشتباك مع مشاكله.</p>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-r-4 border-indigo-500">
+                                <span class="block text-[11px] font-bold text-white bg-indigo-500 px-2 py-1 rounded mb-2 w-max">الهدف: شرح عميق</span>
+                                <strong class="text-brand-dark block text-base mb-1">Thread متسلسل</strong>
+                                <p class="text-slate-600">يوضح أسباب البطالة: المهارات، التعليم، الأجور، التوظيف، والتكنولوجيا.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-r-4 border-teal-500">
+                                <span class="block text-[11px] font-bold text-white bg-teal-500 px-2 py-1 rounded mb-2 w-max">الهدف: تبسيط رقم</span>
+                                <strong class="text-brand-dark block text-base mb-1">Visual Card</strong>
+                                <p class="text-slate-600">كارت يبسّط رقمًا واحدًا عن البطالة أو تكلفة المعيشة.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-r-4 border-red-500">
+                                <span class="block text-[11px] font-bold text-white bg-red-500 px-2 py-1 rounded mb-2 w-max">الهدف: انتشار واسع</span>
+                                <strong class="text-brand-dark block text-base mb-1">Video قصير</strong>
+                                <p class="text-slate-600">فيديو 60 ثانية: لماذا لا يجد الخريج وظيفة مناسبة؟</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-r-4 border-purple-500">
+                                <span class="block text-[11px] font-bold text-white bg-purple-500 px-2 py-1 rounded mb-2 w-max">الهدف: مرجعية وسلطة</span>
+                                <strong class="text-brand-dark block text-base mb-1">Article معمّق</strong>
+                                <p class="text-slate-600">تحليل اقتصادي يفصل جذور البطالة والحلول الممكنة.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-r-4 border-orange-500">
+                                <span class="block text-[11px] font-bold text-white bg-orange-500 px-2 py-1 rounded mb-2 w-max">الهدف: نقاش ومجتمع</span>
+                                <strong class="text-brand-dark block text-base mb-1">Space تفاعلي</strong>
+                                <p class="text-slate-600">نقاش حي مع خبير توظيف وشباب يبحثون عن فرص.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- TAB 2: Persona (22 Countries) -->
-            <section id="persona" class="tab-content">
+            <section id="strategies" class="tab-content">
                 <div class="mb-8">
-                    <h1 class="text-3xl font-extrabold text-brand-dark mb-2">الشخصية ونبرة الصوت (22 دولة)</h1>
-                    <p class="text-slate-600 text-lg">كيف تختلف نبرة كل حساب ليلائم جمهوره بناءً على التحليل الجغرافي والثقافي.</p>
+                    <h1 class="text-3xl font-extrabold text-brand-dark mb-2">استراتيجية الفيجوال والفيديو</h1>
+                    <p class="text-slate-600 text-lg">الفيجوال في الحساب الصحفي ليس زينة، بل أداة لفهم أسرع، وثقة أعلى، وحفظ أكبر.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                    <!-- 1. KSA -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-green-700 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">السعودية</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الراوي التراثي</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> حكيم، فخور، هادئ.</p>
-                            <p><strong>الزاوية:</strong> الجذور، التراث، وتطور الإنسان في الجزيرة.</p>
-                        </div>
-                    </div>
-
-                    <!-- 2. Egypt -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-red-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">مصر</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">المثقف الشعبي</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> ذكي، قريب من الناس، مباشر.</p>
-                            <p><strong>الزاوية:</strong> تأثير الحدث على الشارع والاقتصاد اليومي.</p>
-                        </div>
-                    </div>
-
-                    <!-- 3. UAE -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-emerald-500 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">الإمارات</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">المستقبلي</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> متفائل، عملي، مدفوع بالابتكار.</p>
-                            <p><strong>الزاوية:</strong> الحلول التقنية والذكاء الاصطناعي.</p>
-                        </div>
-                    </div>
-
-                    <!-- 4. Lebanon -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-purple-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">لبنان</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الراوي الثقافي</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> أدبي، إنساني، مرهف.</p>
-                            <p><strong>الزاوية:</strong> الذاكرة، الحنين، أدب الرحلات والفنون.</p>
-                        </div>
-                    </div>
-
-                    <!-- 5. Jordan -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-stone-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">الأردن</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">المؤرخ الهادئ</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> معرفي، متزن، يعتمد على التاريخ.</p>
-                            <p><strong>الزاوية:</strong> الجغرافيا وتأثيرها على التجارة والسياسة.</p>
-                        </div>
-                    </div>
+                <div class="presentation-card">
+                    <div class="slide-number">03</div>
+                    <h3 class="text-xl font-bold text-brand-primary mb-4">استراتيجية المحتوى البصري: الفيجوال مش ديكور.. هو أداة شرح وتبسيط</h3>
                     
-                    <!-- 6. Kuwait -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-blue-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">الكويت</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">التاجر الحكيم</span>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-red-50 p-5 rounded-xl border border-red-200">
+                            <h4 class="font-bold text-red-800 mb-3"><i class="fa-solid fa-stopwatch"></i> قاعدة الـ 5 ثواني (The 5-Second Rule)</h4>
+                            <p class="text-sm text-slate-700 mb-2">الفيجوال الناجح يجيب على سؤال واحد: <strong>ما هي المعلومة التي سيفهمها الجمهور في 5 ثوانٍ فقط؟</strong></p>
+                            <ul class="text-sm text-red-700 list-disc list-inside space-y-1 mt-2">
+                                <li>يجب أن يحتوي الفيجوال على <strong>فكرة واحدة فقط</strong>.</li>
+                                <li>الفيجوال المزدحم بالكلام هو "مقال فاشل" متنكر في صورة.</li>
+                                <li>الصورة تخطف الانتباه (Hook)، والنص في التغريدة يكمل الشرح.</li>
+                            </ul>
                         </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> واقعي، مهتم بالاقتصاد والديمقراطية.</p>
-                            <p><strong>الزاوية:</strong> التجارة، الثقافة البرلمانية، والغوص قديماً.</p>
+                        <div class="bg-green-50 p-5 rounded-xl border border-green-200">
+                            <h4 class="font-bold text-green-800 mb-3"><i class="fa-solid fa-bullseye"></i> وظيفة الفيجوال الاستراتيجية</h4>
+                            <ul class="text-sm text-green-800 list-disc list-inside space-y-2 mt-2">
+                                <li><strong>Stop the Scroll:</strong> يوقف عين المستخدم وسط الزحمة.</li>
+                                <li><strong>Build Memory:</strong> يثبت معلومة أو رقماً مهماً في الذاكرة.</li>
+                                <li><strong>Save / Bookmark:</strong> يجعل المحتوى قابلاً للحفظ كمرجع.</li>
+                                <li><strong>Build Authority:</strong> استخدام قوالب ثابتة يعطي انطباعاً موثوقاً.</li>
+                            </ul>
                         </div>
                     </div>
+
+                    <h4 class="font-bold text-slate-800 mb-4 border-b pb-2"><i class="fa-solid fa-book-open text-brand-secondary mr-2"></i> قاموس الفيجوال (Visual Glossary)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <div class="bg-blue-100 text-blue-600 w-10 h-10 rounded flex items-center justify-center flex-shrink-0 font-bold"><i class="fa-solid fa-chart-pie"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Data Card</h5>
+                                <p class="text-xs text-slate-500 mt-1">يُستخدم لعرض رقم صادم أو مؤشر إحصائي رئيسي في التقرير ليحفظه الجمهور.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <div class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded flex items-center justify-center flex-shrink-0 font-bold"><i class="fa-solid fa-scale-unbalanced"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Comparison Card</h5>
+                                <p class="text-xs text-slate-500 mt-1">مقارنة بين حالتين (قبل/بعد، أو نظامين مختلفين) لتوضيح الفارق السريع.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <div class="bg-teal-100 text-teal-600 w-10 h-10 rounded flex items-center justify-center flex-shrink-0 font-bold"><i class="fa-solid fa-timeline"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Timeline</h5>
+                                <p class="text-xs text-slate-500 mt-1">تتبع تطور الأحداث عبر الزمن (تاريخ أزمة أو مسيرة إنجاز سياسي/اقتصادي).</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <div class="bg-purple-100 text-purple-600 w-10 h-10 rounded flex items-center justify-center flex-shrink-0 font-bold"><i class="fa-solid fa-quote-right"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Quote + Context</h5>
+                                <p class="text-xs text-slate-500 mt-1">تصريح قوي لمسؤول + سياق بسيط يوضح لماذا هذا التصريح مهم الآن.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <div class="bg-orange-100 text-orange-600 w-10 h-10 rounded flex items-center justify-center flex-shrink-0 font-bold"><i class="fa-solid fa-list-check"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Checklist</h5>
+                                <p class="text-xs text-slate-500 mt-1">خطوات محددة، قواعد للتحقق، أو نصائح إجرائية لتبسيط قرار معقد.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex gap-3 items-start">
+                            <div class="bg-emerald-100 text-emerald-600 w-10 h-10 rounded flex items-center justify-center flex-shrink-0 font-bold"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-800 text-sm">Map Card</h5>
+                                <p class="text-xs text-slate-500 mt-1">خريطة توضح الأبعاد الجغرافية لصراع، طريق تجاري، أو موقع حدث.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="presentation-card">
+                    <div class="slide-number">04</div>
+                    <h3 class="text-xl font-bold text-brand-primary mb-4">استراتيجية الفيديو والثريد (Video & Thread)</h3>
                     
-                    <!-- 7. Qatar -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-rose-800 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">قطر</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الدبلوماسي الحديث</span>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-3 bg-brand-secondary text-white p-2 rounded">معادلة فيديو الـ 60 ثانية</h4>
+                            <p class="text-sm text-slate-600 mb-3">الفيديو هو مدخل الاكتشاف لقضايا البطالة والرواتب. ليس شرطاً أن يكون إنتاجاً ضخماً، الأهم أن يشعر الشاب أن السؤال يخص حياته:</p>
+                            <div class="flex flex-col gap-2">
+                                <div class="bg-slate-100 p-2 rounded border border-slate-200 text-sm border-l-4 border-l-brand-primary"><strong>1. Hook (0-3s):</strong> خطف الانتباه وسبب قوي للمشاهدة.</div>
+                                <div class="bg-slate-100 p-2 rounded border border-slate-200 text-sm border-l-4 border-l-blue-500"><strong>2. Context (3-15s):</strong> وضع مشكلة البطالة في سياق التعليم والسوق والرواتب.</div>
+                                <div class="bg-slate-100 p-2 rounded border border-slate-200 text-sm border-l-4 border-l-teal-500"><strong>3. Evidence (15-40s):</strong> تقديم أرقام موثوقة أو أمثلة واقعية أو مقارنة بين المدن.</div>
+                                <div class="bg-slate-100 p-2 rounded border border-slate-200 text-sm border-l-4 border-l-emerald-500"><strong>4. Meaning (40-50s):</strong> ما معنى ذلك للخريج أو الموظف أو الأسرة؟</div>
+                                <div class="bg-slate-100 p-2 rounded border border-slate-200 text-sm border-l-4 border-l-brand-accent"><strong>5. CTA (50-60s):</strong> توجيه المشاهد للخطوة التالية.</div>
+                            </div>
                         </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> هادئ، طموح، دولي.</p>
-                            <p><strong>الزاوية:</strong> الوساطة، الرياضة، والاستثمار.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 8. Bahrain -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-red-800 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">البحرين</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">المثقف الخليجي</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> متعلم، مهتم بالتاريخ القديم.</p>
-                            <p><strong>الزاوية:</strong> دلمون، التعايش، وتطور التعليم.</p>
-                        </div>
-                    </div>
 
-                    <!-- 9. Oman -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-orange-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">عُمان</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الملاح الأصيل</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> هادئ، محايد، أصيل.</p>
-                            <p><strong>الزاوية:</strong> الملاحة، التسامح، والحياد الإيجابي.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 10. Palestine -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-emerald-700 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">فلسطين</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">المقاوم الصامد</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> قوي، متحدي، مرتبط بالأرض.</p>
-                            <p><strong>الزاوية:</strong> الصمود، الكوفية، والزيتون.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 11. Syria -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-red-500 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">سوريا</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الشاعر المكلوم</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> درامي، عميق، يعتمد على الحنين.</p>
-                            <p><strong>الزاوية:</strong> التاريخ الأموي، الشتات، وياسمين الشام.</p>
-                        </div>
-                    </div>
-
-                    <!-- 12. Iraq -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-slate-800 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">العراق</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الحضاري المتعلم</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> مثقف جداً، متأثر بحضارة الرافدين.</p>
-                            <p><strong>الزاوية:</strong> سومر، بابل، والشعر العربي العميق.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 13. Yemen -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-red-900 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">اليمن</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الأصيل المتألم</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> فخور، أصيل، متألم.</p>
-                            <p><strong>الزاوية:</strong> العمارة الطينية، القهوة، وأصل العرب.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 14. Sudan -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-green-800 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">السودان</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الطيب النبيل</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> طيب، مثقف، يمزج العروبة بإفريقيا.</p>
-                            <p><strong>الزاوية:</strong> النيل، النوبة، والشعر السوداني.</p>
-                        </div>
-                    </div>
-
-                    <!-- 15. Libya -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-teal-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">ليبيا</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">البدوي الحر</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> بدوي، كريم، معتز بالصحراء.</p>
-                            <p><strong>الزاوية:</strong> الصحراء الكبرى، والآثار الرومانية.</p>
-                        </div>
-                    </div>
-
-                    <!-- 16. Tunisia -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-red-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">تونس</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">المتوسطي المنفتح</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> براغماتي، تقدمي، متوسطي.</p>
-                            <p><strong>الزاوية:</strong> قرطاج، السياحة، والتاريخ الأندلسي.</p>
-                        </div>
-                    </div>
-
-                    <!-- 17. Algeria -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-green-600 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">الجزائر</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الثائر الفخور</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> حاد المراس، فخور، يعتز بالتحرر.</p>
-                            <p><strong>الزاوية:</strong> ثورة التحرير، والثقافة المتنوعة.</p>
-                        </div>
-                    </div>
-
-                    <!-- 18. Morocco -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-red-700 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">المغرب</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الصانع الماهر</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> فني، يعتز بالتاريخ والمؤسسات.</p>
-                            <p><strong>الزاوية:</strong> الصناعة التقليدية، الطبخ، والموريسكيين.</p>
-                        </div>
-                    </div>
-
-                    <!-- 19. Mauritania -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-green-500 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">موريتانيا</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">الشنقيطي الحافظ</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> بدوي، عالم، حافظ للشعر.</p>
-                            <p><strong>الزاوية:</strong> المحاظر، الشعر الفصيح، والمخطوطات.</p>
-                        </div>
-                    </div>
-
-                    <!-- 20. Djibouti -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-blue-400 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">جيبوتي</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">بوابة إفريقيا</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> استراتيجي، يمزج العروبة بالقرن الإفريقي.</p>
-                            <p><strong>الزاوية:</strong> الموانئ، والتعايش الثقافي.</p>
-                        </div>
-                    </div>
-
-                    <!-- 21. Somalia -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-sky-500 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">الصومال</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">البحار المقاتل</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> صامد، يعتز بالبحر وإعادة البناء.</p>
-                            <p><strong>الزاوية:</strong> سواحل المحيط الهندي الطويلة والتجارة.</p>
-                        </div>
-                    </div>
-
-                    <!-- 22. Comoros -->
-                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <div class="bg-yellow-500 p-3 text-center">
-                            <h3 class="text-lg font-bold text-white">جزر القمر</h3>
-                            <span class="bg-white/20 text-white px-2 py-1 rounded-full text-[10px] mt-1 inline-block font-bold">المسلم الاستوائي</span>
-                        </div>
-                        <div class="p-4 text-xs text-slate-700 space-y-2">
-                            <p><strong>النبرة:</strong> هادئ، طبيعي، فخور بانتمائه.</p>
-                            <p><strong>الزاوية:</strong> الطبيعة البكر، التوابل، والتاريخ البحري.</p>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-3 bg-brand-primary text-white p-2 rounded">تشريح الثريد (Thread Anatomy)</h4>
+                            <p class="text-sm text-slate-600 mb-3"><strong class="text-red-600">الثريد ليس مقالاً طويلاً مقطعاً!</strong> بل هو رحلة إقناع متسلسلة:</p>
+                            <ul class="space-y-2 text-sm font-readex bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                <li><span class="inline-block w-20 font-bold text-brand-primary">Tweet 1:</span> Hook + Promise (وعد القراءة)</li>
+                                <li><span class="inline-block w-20 font-bold text-brand-primary">Tweet 2:</span> Context (السياق والخلفية)</li>
+                                <li><span class="inline-block w-20 font-bold text-brand-primary">Tweets 3-6:</span> Key Points (نقطة واحدة لكل تغريدة)</li>
+                                <li><span class="inline-block w-20 font-bold text-brand-primary">Tweet 7:</span> Evidence (الدليل والأرقام)</li>
+                                <li><span class="inline-block w-20 font-bold text-brand-primary">Tweet 8:</span> Meaning (المعنى المباشر للجمهور)</li>
+                                <li><span class="inline-block w-20 font-bold text-brand-primary">Final:</span> CTA (دعوة واضحة للفعل)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- TAB 3: Mechanics -->
-            <section id="mechanics" class="tab-content">
+            <section id="architecture" class="tab-content">
                 <div class="mb-8">
-                    <h1 class="text-3xl font-extrabold text-brand-dark mb-2"><i class="fa-solid fa-lightbulb text-brand-accent mr-2"></i> تكنيك النشر المتقاطع</h1>
-                    <p class="text-slate-600 text-lg">الفكرة ليست "إعادة نشر" فقط، بل هي شبكة حسابات متخصصة تتبادل السياق.</p>
+                    <h1 class="text-3xl font-extrabold text-brand-dark mb-2">الهيكلة وسلم المحتوى (Content Ladder)</h1>
+                    <p class="text-slate-600 text-lg">كيف تدير شبكة حسابات تناقش البطالة وسوق العمل دون تكرار أو فوضى.</p>
                 </div>
 
-                <div class="bg-brand-primary/10 border border-brand-primary/20 p-5 rounded-xl mb-8">
-                    <h3 class="text-brand-primary font-bold text-lg mb-2">القاعدة الذهبية للتفاعل (70%)</h3>
-                    <p class="text-slate-700">للحسابات الثقافية العربية تحديدًا، ننصح بأن تكون نسبة <strong>70% من الـ Quote Tweets عبارة عن أسئلة للجمهور</strong> وليس معلومات إضافية فقط.</p>
-                </div>
+                <div class="presentation-card">
+                    <div class="slide-number">05</div>
+                    <h3 class="text-xl font-bold text-brand-primary mb-4">سلم المحتوى: فكرة واحدة = منظومة كاملة</h3>
+                    <p class="text-slate-700 mb-4">بدلاً من اختراع محتوى جديد يومياً، نأخذ <strong>فكرة مركزية مثل البطالة أو الراتب المناسب</strong> ونوزعها بأشكال وزوايا مختلفة على الحسابات.</p>
+                    
+                    <div class="flex items-center justify-center gap-2 flex-wrap mb-6 bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-inner">
+                        <span class="font-black text-brand-daoline text-lg px-4 py-2 bg-white rounded-lg shadow-sm border border-slate-200">التقرير المركزي</span>
+                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
+                        <span class="bg-white px-3 py-2 rounded shadow-sm text-sm font-bold text-slate-700">Post (جذب)</span>
+                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
+                        <span class="bg-white px-3 py-2 rounded shadow-sm text-sm font-bold text-slate-700">Visual (رقم)</span>
+                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
+                        <span class="bg-white px-3 py-2 rounded shadow-sm text-sm font-bold text-slate-700">Thread (شرح)</span>
+                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
+                        <span class="bg-white px-3 py-2 rounded shadow-sm text-sm font-bold text-slate-700">Video (ملخص)</span>
+                        <i class="fa-solid fa-arrow-left text-slate-400"></i>
+                        <span class="bg-white px-3 py-2 rounded shadow-sm text-sm font-bold text-slate-700">Space (نقاش)</span>
+                    </div>
 
-                <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">التطبيق الأول: الحوار الثقافي بين 5 حسابات</h2>
-                <div class="space-y-8 mb-12">
-                    <!-- Example 1 -->
-                    <div class="tweet-card border-l-4 border-l-green-600 pl-4 bg-white p-4 rounded-lg shadow-sm">
-                        <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded mb-2 inline-block">1. السعودية ← مصر</span>
-                        <p class="text-slate-800 font-readex mb-3"><strong class="text-green-700">السعودية (تغريدة أصلية):</strong> هل تعلم أن سوق عكاظ لم يكن مجرد سوق تجاري؟ بل كان منصة للشعراء والخطباء وتبادل المعرفة بين القبائل.</p>
-                        <div class="quote-tweet border-l-4 border-l-red-600">
-                            <p class="text-slate-700 text-sm font-readex"><strong class="text-red-700">مصر (Quote Tweet بعد ساعتين):</strong> تاريخيًا، كانت أسواق العرب تقوم بدور يشبه ما قامت به المقاهي الثقافية في القاهرة خلال القرن العشرين. كيف ترون تأثير هذه التجمعات الثقافية في تشكيل الهوية العربية اليوم؟</p>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white border-t-4 border-brand-primary p-4 rounded shadow-sm">
+                            <h4 class="font-bold text-slate-800 text-sm mb-2"><i class="fa-solid fa-crown text-brand-primary"></i> Master Brand</h4>
+                            <p class="text-xs text-slate-600">ينشر السؤال أو التقرير المركزي عن البطالة ويبني النقاش العام.</p>
+                        </div>
+                        <div class="bg-white border-t-4 border-brand-secondary p-4 rounded shadow-sm">
+                            <h4 class="font-bold text-slate-800 text-sm mb-2"><i class="fa-solid fa-magnifying-glass-chart text-brand-secondary"></i> Specialist Brand</h4>
+                            <p class="text-xs text-slate-600">يحوّل ملف البطالة إلى ثريد أو فيديو يشرح الأرقام والأسباب.</p>
+                        </div>
+                        <div class="bg-white border-t-4 border-emerald-500 p-4 rounded shadow-sm">
+                            <h4 class="font-bold text-slate-800 text-sm mb-2"><i class="fa-solid fa-map-location-dot text-emerald-500"></i> Country Brand</h4>
+                            <p class="text-xs text-slate-600">يربط البطالة بتجربة المواطن المحلي: الراتب، السكن، الزواج، والهجرة.</p>
                         </div>
                     </div>
-                    <!-- Example 2 -->
-                    <div class="tweet-card border-l-4 border-l-red-600 pl-4 bg-white p-4 rounded-lg shadow-sm">
-                        <span class="text-xs font-bold bg-red-100 text-red-800 px-2 py-1 rounded mb-2 inline-block">2. مصر ← الإمارات</span>
-                        <p class="text-slate-800 font-readex mb-3"><strong class="text-red-700">مصر (تغريدة أصلية):</strong> في عشرينيات القرن الماضي أصبحت القاهرة مركزًا عربيًا للمسرح والغناء، ومنها انطلقت أعمال ما زالت تؤثر في الثقافة العربية حتى اليوم.</p>
-                        <div class="quote-tweet border-l-4 border-l-emerald-500">
-                            <p class="text-slate-700 text-sm font-readex"><strong class="text-emerald-600">الإمارات (Quote Tweet):</strong> لفت انتباهنا هذا الطرح من زملائنا. اليوم تلعب المهرجانات الثقافية العربية دورًا مشابهًا في نشر الفنون بين الأجيال الجديدة. ما الفعالية الثقافية العربية التي أثرت فيكم أكثر؟</p>
-                        </div>
-                    </div>
                 </div>
 
-                <h2 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">التطبيق الثاني: تغطية قضية جيوسياسية (مضيق هرمز)</h2>
-                <div class="grid md:grid-cols-2 gap-4 text-sm font-readex text-slate-700 mb-8">
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                        <strong class="text-brand-primary block mb-1">1. التغريدة الأصلية (حياة الوسط)</strong>
-                        لماذا يتصدر مضيق هرمز الأخبار كلما تصاعد التوتر في المنطقة؟ لأن جزءًا مهمًا من تجارة الطاقة العالمية يمر عبر هذا الممر.
-                    </div>
-                    <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-                        <strong class="text-green-700 block mb-1">2. السعودية (Quote Tweet)</strong>
-                        التاريخ يخبرنا أن الممرات البحرية لم تكن مجرد طرق للتجارة، بل جسورًا للحضارات. مضيق هرمز ظل لقرون جزءًا من شبكة ربطت الجزيرة بالعالم.
-                    </div>
-                    <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-                        <strong class="text-emerald-600 block mb-1">3. الإمارات (Quote Tweet)</strong>
-                        لفت انتباهنا شرح زملائنا. في عالم يعتمد على سلاسل الإمداد، تتحول بعض المواقع لنقاط تؤثر في حركة الأسواق العالمية.
-                    </div>
-                    <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-                        <strong class="text-orange-600 block mb-1">4. عُمان (Quote Tweet)</strong>
-                        البحر جزء من هوية المنطقة. ومن بين الممرات يبرز مضيق هرمز كأحد أهم بوابات الحركة البحرية في الخليج منذ آلاف السنين.
-                    </div>
-                    <div class="bg-slate-800 text-white p-4 rounded-lg border border-slate-700 md:col-span-2 text-center mt-2">
-                        <strong class="text-brand-secondary block mb-1">5. حياة المدينة (التغريدة الختامية التجميعية)</strong>
-                        من التاريخ إلى الاقتصاد والملاحة.. يوضح لنا مضيق هرمز كيف يؤثر موقع واحد في حياة ملايين البشر. برأيكم: ما هو الممر المائي العربي الأكثر تأثيرًا؟
+                <div class="presentation-card bg-slate-800 text-white border-t-4 border-brand-daoline">
+                    <div class="slide-number bg-brand-daoline">06</div>
+                    <h3 class="text-xl font-bold mb-6 mt-2">خريطة الـ 22 دولة (الشخصية والنبرة)</h3>
+                    <p class="text-slate-300 mb-6 text-sm">تحديد زاوية كل دولة عند تناول البطالة والرواتب وسوق العمل، حتى لا تكرر الحسابات نفس الكلام وتظهر كل دولة بصوتها المحلي.</p>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <!-- KSA -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">السعودية</h4>
+                            <span class="bg-brand-primary text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">الراوي التراثي</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> حكيم، فخور.<br><strong class="text-white">الزاوية:</strong> الرواتب، تكلفة السكن، التحول من الوظيفة التقليدية إلى المهارات الجديدة.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت السعودية عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_ksa" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Egypt -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">مصر</h4>
+                            <span class="bg-red-600 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">المثقف الشعبي</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> ذكي، قريب، مباشر.<br><strong class="text-white">الزاوية:</strong> أثر البطالة على الشارع، تعدد مصادر الدخل، والعمل الحر كحل واقعي.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت مصر عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_egypt" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- UAE -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">الإمارات</h4>
+                            <span class="bg-emerald-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">المستقبلي</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> متفائل، مدفوع بالابتكار.<br><strong class="text-white">الزاوية:</strong> المهارات المستقبلية، الذكاء الاصطناعي، وفرص العمل الجديدة.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت الإمارات عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_uae" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Lebanon -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">لبنان</h4>
+                            <span class="bg-purple-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">الراوي الثقافي</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> أدبي، إنساني.<br><strong class="text-white">الزاوية:</strong> هجرة الكفاءات، القلق اليومي، والبعد الإنساني لفقدان الفرص.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت لبنان عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_lebanon" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Jordan -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">الأردن</h4>
+                            <span class="bg-stone-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">المؤرخ الهادئ</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> معرفي، يعتمد على التاريخ.<br><strong class="text-white">الزاوية:</strong> ربط التعليم بسوق العمل، وفرص الشباب في اقتصاد محدود الموارد.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت الأردن عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_jordan" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Kuwait -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">الكويت</h4>
+                            <span class="bg-blue-600 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">المحلل الاقتصادي الواقعي</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> واقعي، ديمقراطي.<br><strong class="text-white">الزاوية:</strong> الإنفاق الشهري، الرواتب، والفرق بين الاستقرار الوظيفي والطموح.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت الكويت عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_kuwait" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Qatar -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">قطر</h4>
+                            <span class="bg-rose-700 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">محلل سوق العمل الحديث</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> هادئ، طموح، دولي.<br><strong class="text-white">الزاوية:</strong> التوظيف الحديث، الاستثمار في الإنسان، والفرص المرتبطة بالاقتصاد الجديد.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت قطر عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_qatar" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Bahrain -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">البحرين</h4>
+                            <span class="bg-red-800 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">القارئ الاجتماعي الخليجي</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> متعلم، تاريخي، منفتح.<br><strong class="text-white">الزاوية:</strong> تأثير صغر السوق على الفرص، والتوازن بين الشهادة والمهارة.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت البحرين عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_bahrain" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Oman -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">عُمان</h4>
+                            <span class="bg-orange-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">الملاح الأصيل</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> هادئ، محايد، أصيل.<br><strong class="text-white">الزاوية:</strong> الهدوء الاقتصادي، فرص الشباب خارج العاصمة، والعمل المرتبط بالهوية البحرية والسياحة.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت عُمان عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_oman" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Palestine -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">فلسطين</h4>
+                            <span class="bg-emerald-600 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الصمود والعمل</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> قوي، مرتبط بالأرض.<br><strong class="text-white">الزاوية:</strong> العمل تحت الضغط، الصمود الاقتصادي، وفرص الشباب رغم القيود.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت فلسطين عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_palestine" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Syria -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">سوريا</h4>
+                            <span class="bg-red-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الحنين والفرص الضائعة</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> درامي، يعتمد على الحنين.<br><strong class="text-white">الزاوية:</strong> إعادة بناء المهارات بعد الأزمات، الهجرة المهنية، وفقدان الفرص.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت سوريا عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_syria" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Iraq -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">العراق</h4>
+                            <span class="bg-slate-900 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block border border-slate-600">صوت التعليم والمهارات</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> مثقف، متأثر بالرافدين.<br><strong class="text-white">الزاوية:</strong> التعليم والقطاع العام والخاص، وكيف تتحول الطاقة الشبابية إلى إنتاج.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت العراق عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_iraq" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Yemen -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">اليمن</h4>
+                            <span class="bg-red-900 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الهجرة والعمل</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> فخور، أصيل، متألم.<br><strong class="text-white">الزاوية:</strong> الهجرة من أجل العمل، الاقتصاد غير المستقر، والبحث عن فرصة آمنة.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت اليمن عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_yemen" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Sudan -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">السودان</h4>
+                            <span class="bg-green-700 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الشباب الباحث عن فرصة</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> طيب، يمزج العروبة بإفريقيا.<br><strong class="text-white">الزاوية:</strong> الشباب بين النزوح والعمل، وفكرة البداية من جديد.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت السودان عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_sudan" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Libya -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">ليبيا</h4>
+                            <span class="bg-teal-600 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الموارد والفرص</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> بدوي، كريم، معتز بالصحراء.<br><strong class="text-white">الزاوية:</strong> الموارد مقابل قلة التنظيم الوظيفي، وفرص الشباب في سوق غير مستقر.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت ليبيا عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_libya" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Tunisia -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">تونس</h4>
+                            <span class="bg-red-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت التعليم والانفتاح</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> براغماتي، تقدمي، متوسطي.<br><strong class="text-white">الزاوية:</strong> بطالة الخريجين، التعليم، والهجرة كاختيار مؤلم.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت تونس عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_tunisia" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Algeria -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">الجزائر</h4>
+                            <span class="bg-green-600 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الطاقة الشبابية</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> حاد المراس، فخور بثورة التحرير.<br><strong class="text-white">الزاوية:</strong> الطاقة الشبابية، ريادة الأعمال، وخلق فرص خارج الوظيفة الحكومية.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت الجزائر عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_algeria" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Morocco -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">المغرب</h4>
+                            <span class="bg-red-700 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الحرفة والمهارة</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> فني، يعتز بالتاريخ العريق.<br><strong class="text-white">الزاوية:</strong> الحرف والمهارات والسياحة والصناعة كبدائل للبطالة.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت المغرب عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_morocco" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Mauritania -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">موريتانيا</h4>
+                            <span class="bg-green-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت التعليم والمعرفة</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> بدوي، عالم، حافظ للشعر.<br><strong class="text-white">الزاوية:</strong> التعليم التقليدي والمهارات الحديثة، وفرص الشباب خارج العاصمة.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت موريتانيا عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_mauritania" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Djibouti -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">جيبوتي</h4>
+                            <span class="bg-blue-400 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الموانئ والفرص</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> استراتيجي، القرن الإفريقي.<br><strong class="text-white">الزاوية:</strong> الموانئ والخدمات اللوجستية كمدخل لتوظيف الشباب.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت جيبوتي عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_djibouti" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Somalia -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">الصومال</h4>
+                            <span class="bg-sky-500 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت البناء من جديد</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> صامد، يعتز بالبحر وإعادة البناء.<br><strong class="text-white">الزاوية:</strong> إعادة البناء، المشاريع الصغيرة، وفرص العمل بعد الأزمات.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت الصومال عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_somalia" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
+                        <!-- Comoros -->
+                        <div class="bg-slate-700 p-4 rounded-xl border border-slate-600">
+                            <h4 class="font-bold text-brand-secondary mb-1">جزر القمر</h4>
+                            <span class="bg-yellow-600 text-white px-2 py-0.5 rounded text-[10px] mb-2 inline-block">صوت الجزر والفرص المحدودة</span>
+                            <p class="text-xs text-slate-300"><strong class="text-white">النبرة:</strong> هادئ، طبيعي، فخور بانتمائه.<br><strong class="text-white">الزاوية:</strong> ضيق السوق المحلي، الهجرة، والسياحة كفرصة تشغيل.</p>
+                            <div class="mt-3 bg-slate-800/60 border border-slate-600 rounded-lg p-3">
+                                <label class="block text-[11px] font-bold text-brand-secondary mb-1">تطبيق المتدرب — اكتب منشورًا بصوت جزر القمر عن البطالة</label>
+                                <p class="text-[11px] text-slate-400 mb-2 leading-relaxed">المطلوب: 35–55 كلمة، سؤال واحد واضح في النهاية، بدون أرقام غير موثقة، وبلغة تناسب نبرة البلد.</p>
+                                <textarea form="homeworkForm" name="country_answer_comoros" class="w-full p-2 rounded bg-slate-900 text-white border border-slate-600 text-xs min-h-[85px] outline-none focus:border-brand-secondary" placeholder="مثال: اكتب زاوية محلية تربط البطالة بالراتب، السكن، المهارات، أو الهجرة..."></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- TAB 4: Content Plan -->
-            <section id="content-plan" class="tab-content">
+            <section id="cross_promo" class="tab-content">
                 <div class="mb-8">
-                    <h1 class="text-3xl font-extrabold text-brand-dark mb-2">خطة المحتوى التفصيلية - يونيو 2026</h1>
-                    <div class="mt-2 inline-block bg-brand-primary text-white px-4 py-2 rounded-lg font-bold text-sm shadow-md">
-                        شعار الشهر: "كيف يؤثر ما يحدث في العالم على حياة المواطن العربي؟"
-                    </div>
-                    <p class="text-slate-600 mt-4 font-semibold">كل موضوع يجب أن يجيب عن: ماذا حدث؟ لماذا يهم؟ كيف يرتبط بتاريخنا؟ ماذا يعني للمواطن العربي؟</p>
+                    <h1 class="text-3xl font-extrabold text-brand-dark mb-2">خطة المحتوى والنشر المتقاطع</h1>
+                    <p class="text-slate-600 text-lg">كيف تدير نقاشاً متكاملاً حول البطالة والرواتب ومستقبل الوظائف في الشرق الأوسط.</p>
                 </div>
 
-                <div class="space-y-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2">الأسبوع الأول: عيد الأضحى والبيئة</h3>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-slate-100 p-2 rounded">عيد الأضحى وما بعده</h4>
-                                <ul class="space-y-2 text-sm text-slate-700 pr-2 border-r-2 border-brand-secondary">
-                                    <li><strong class="text-green-700">السعودية:</strong> كيف تطورت رحلة الحج عبر القرون؟</li>
-                                    <li><strong class="text-red-700">مصر:</strong> كيف غيّر الحج حياة المصريين اجتماعيًا؟</li>
-                                    <li><strong class="text-emerald-600">الإمارات:</strong> الذكاء الاصطناعي في إدارة الحشود.</li>
-                                    <li><strong class="text-purple-600">لبنان:</strong> أدب الرحلات العربية إلى الحجاز.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-green-50 p-2 rounded text-green-800">اليوم العالمي للبيئة (5 يونيو)</h4>
-                                <ul class="space-y-2 text-sm text-slate-700 pr-2 border-r-2 border-green-400">
-                                    <li><strong class="text-green-700">السعودية:</strong> الواحات وحياة الإنسان في الجزيرة.</li>
-                                    <li><strong class="text-red-700">مصر:</strong> النيل وحماية المياه كقضية حياة.</li>
-                                    <li><strong class="text-emerald-600">الإمارات:</strong> التقنيات الخضراء ومدن المستقبل.</li>
-                                    <li><strong class="text-purple-600">لبنان:</strong> الجبال والغابات في الذاكرة اللبنانية.</li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="presentation-card">
+                    <div class="slide-number">07</div>
+                    <h3 class="text-xl font-bold text-brand-primary mb-4">تكنيك النشر المتقاطع (Cross-Promotion Strategy)</h3>
+                    <p class="text-slate-700 mb-4">الفكرة ليست إعادة نشر سؤال الرواتب فقط، بل تحويله إلى نقاش إقليمي تشارك فيه عدة حسابات. كل حساب يقتبس التغريدة الأصلية من زاوية مختلفة: تكلفة المعيشة، السكن، الوظائف، المهارات، جودة الحياة، ومستقبل الشباب.</p>
+                    
+                    <div class="bg-red-50 border-r-4 border-red-500 p-4 mb-6">
+                        <strong class="text-red-800"><i class="fa-solid fa-triangle-exclamation"></i> القاعدة الذهبية للتفاعل (قاعدة الـ 70%):</strong>
+                        <p class="text-sm text-red-700 mt-1">يجب أن تكون نسبة 70% من الـ Quote Tweets عبارة عن <strong>أسئلة موجهة للجمهور</strong> وليست مجرد معلومات إضافية. السؤال الشخصي مثل: "هل يكفي؟" أو "كم تحتاج؟" يفتح باب التعليقات، ويحوّل المتابع من قارئ صامت إلى مشارك في النقاش.</p>
                     </div>
 
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2">الأسبوع الثاني: الجيوسياسة وسوق العمل</h3>
-                         <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-blue-50 p-2 rounded text-blue-800">ملف مضيق هرمز</h4>
-                                <p class="text-xs text-slate-500 mb-2">تم تفصيل تغطية هذا الملف في قسم "تكنيك النشر المتقاطع".</p>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-purple-50 p-2 rounded text-purple-800">الذكاء الاصطناعي وسوق العمل</h4>
-                                <ul class="space-y-2 text-sm text-slate-700 pr-2 border-r-2 border-purple-400">
-                                    <li><strong class="text-emerald-600">الإمارات:</strong> الوظائف الجديدة التي سيخلقها الذكاء الاصطناعي.</li>
-                                    <li><strong class="text-red-700">مصر:</strong> المهارات التي يحتاجها الشباب العربي.</li>
-                                    <li><strong class="text-green-700">السعودية:</strong> من الحرف التقليدية إلى الاقتصاد الرقمي.</li>
-                                    <li><strong class="text-purple-600">لبنان:</strong> كيف تنظر الروايات والأفلام للمستقبل؟</li>
-                                </ul>
-                            </div>
+                    <h4 class="font-bold text-slate-800 mb-3 border-b pb-2">نموذج تطبيقي (سلسلة: هل راتب 5000 ريال اليوم يكفي؟):</h4>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm font-readex text-slate-700 mb-6">
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <strong class="text-brand-primary block mb-1">1. التغريدة الأصلية (حياة الوسط)</strong>
+                            هل راتب 5000 ريال اليوم يكفي؟ بين الإيجار والفواتير والطعام والتنقل.. هل ما زال هذا الراتب يصنع حياة مستقرة؟ اذكر مدينتك، وحالتك: أعزب أم متزوج؟
                         </div>
-                    </div>
-
-                    <!-- Week 3 -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2">الأسبوع الثالث: الأيام العالمية (اللاجئين والموسيقى)</h3>
-                         <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-orange-50 p-2 rounded text-orange-800">اليوم العالمي للاجئين (20 يونيو)</h4>
-                                <ul class="space-y-2 text-sm text-slate-700 pr-2 border-r-2 border-orange-400">
-                                    <li><strong class="text-stone-600">الأردن:</strong> استقبال مدن المنطقة لموجات الهجرة تاريخياً.</li>
-                                    <li><strong class="text-purple-600">لبنان:</strong> قصص إنسانية عن الذاكرة والحنين والبيت.</li>
-                                    <li><strong class="text-red-700">مصر:</strong> مساهمة الوافدين في إثراء المدن العربية.</li>
-                                    <li><strong class="text-green-700">السعودية:</strong> الجوار وإكرام الضيف في التراث.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-pink-50 p-2 rounded text-pink-800">اليوم العالمي للموسيقى (21 يونيو)</h4>
-                                <ul class="space-y-2 text-sm text-slate-700 pr-2 border-r-2 border-pink-400">
-                                    <li><strong class="text-purple-600">لبنان:</strong> فيروز والذاكرة العربية.</li>
-                                    <li><strong class="text-red-700">مصر:</strong> أم كلثوم وتأثيرها على الثقافة.</li>
-                                    <li><strong class="text-green-700">السعودية:</strong> الغناء الشعبي والتراث الموسيقي.</li>
-                                    <li><strong class="text-stone-600">الأردن:</strong> الربابة والشعر النبطي.</li>
-                                </ul>
-                            </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                            <strong class="text-green-700 block mb-1">2. السعودية (Quote Tweet / زاوية تكلفة المعيشة)</strong>
+                            في بعض المدن، أصبح السكن يلتهم جزءاً كبيراً من الراتب. برأيك: ما النسبة الطبيعية التي يجب أن تذهب للإيجار من الدخل الشهري؟
                         </div>
-                    </div>
-
-                    <!-- Week 4 -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2">الأسبوع الرابع: الاقتصاد والعمارة العربية</h3>
-                         <div class="grid md:grid-cols-2 gap-4">
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-yellow-50 p-2 rounded text-yellow-800">الاقتصاد العربي</h4>
-                                <ul class="space-y-2 text-sm text-slate-700 pr-2 border-r-2 border-yellow-400">
-                                    <li><strong class="text-green-700">السعودية:</strong> من سوق عكاظ إلى التجارة الرقمية.</li>
-                                    <li><strong class="text-emerald-600">الإمارات:</strong> الموانئ ودورها في الاقتصاد العالمي.</li>
-                                    <li><strong class="text-red-700">مصر:</strong> قناة السويس والتجارة الدولية.</li>
-                                    <li><strong class="text-purple-600">لبنان:</strong> بيروت كمركز للنشر والاقتصاد المعرفي.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-slate-800 mb-2 text-sm bg-indigo-50 p-2 rounded text-indigo-800">العمارة العربية</h4>
-                                <ul class="space-y-2 text-sm text-slate-700 pr-2 border-r-2 border-indigo-400">
-                                    <li><strong class="text-green-700">السعودية:</strong> العمارة النجدية.</li>
-                                    <li><strong class="text-red-700">مصر:</strong> القاهرة الفاطمية.</li>
-                                    <li><strong class="text-emerald-600">الإمارات:</strong> المدن الذكية.</li>
-                                    <li><strong class="text-stone-600">الأردن:</strong> البتراء كأعجوبة هندسية.</li>
-                                </ul>
-                            </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                            <strong class="text-emerald-600 block mb-1">3. الإمارات (Quote Tweet / زاوية المستقبل والمهارات)</strong>
+                            مع تغير سوق العمل ودخول الذكاء الاصطناعي، هل أصبحت المهارات العملية أهم من الشهادة الجامعية في تأمين وظيفة جيدة؟
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                            <strong class="text-red-600 block mb-1">4. مصر (Quote Tweet / زاوية المواطن)</strong>
+                            كثير من الشباب يعملون أكثر من وظيفة لتحسين الدخل. هل ترى أن الراتب الواحد أصبح كافياً اليوم لبناء حياة مستقرة؟
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                            <strong class="text-blue-600 block mb-1">5. الكويت (Quote Tweet / زاوية الإنفاق الشهري)</strong>
+                            لو قسمنا الراتب بين السكن، الطعام، المواصلات، والفواتير.. ما أول بند يستنزف دخلك شهرياً؟
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
+                            <strong class="text-purple-600 block mb-1">6. لبنان (Quote Tweet / زاوية إنسانية)</strong>
+                            الأرقام مهمة، لكن جودة الحياة أهم. ما العنصر الأهم للاستقرار من وجهة نظرك: دخل أعلى، وقت أكثر، سكن أفضل، أم وظيفة مستقرة؟
+                        </div>
+                        <div class="bg-slate-800 text-white p-4 rounded-lg border border-slate-700 md:col-span-2 text-center mt-2">
+                            <strong class="text-brand-secondary block mb-1">7. حياة الوسط (التغريدة الختامية لتجميع النقاش)</strong>
+                            من الرواتب إلى الإيجارات، ومن الوظائف إلى الذكاء الاصطناعي.. يتغير سوق العمل العربي بسرعة. برأيكم: كم يحتاج الشاب العربي شهرياً ليعيش باستقرار في 2026؟
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-brand-dark text-white p-6 rounded-2xl mt-8">
-                    <h3 class="font-bold text-xl mb-4 text-brand-secondary"><i class="fa-regular fa-clock mr-2"></i> نموذج التشغيل اليومي (Timeline)</h3>
+                <div class="presentation-card">
+                    <div class="slide-number">08</div>
+                    <h3 class="text-xl font-bold text-brand-primary mb-4">خطة المحتوى (يونيو - يوليو 2026) والتشغيل اليومي</h3>
+                    <div class="mt-2 inline-block bg-brand-primary text-white px-4 py-2 rounded-lg font-bold text-sm shadow-md mb-6">
+                        شعار المرحلة: "كيف تغيّر تكلفة المعيشة وسوق العمل حياة المواطن العربي؟"
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-8">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">الأسبوع 1: الرواتب وتكلفة المعيشة</h4>
+                            <p class="text-sm text-slate-600">سلسلة أسئلة مباشرة: هل راتب 5000 ريال يكفي؟ كم تحتاج شهرياً لتعيش براحة؟ وما أكثر بند يستنزف الراتب: السكن، الطعام، التنقل، أم الفواتير؟</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">الأسبوع 2: البطالة والذكاء الاصطناعي</h4>
+                            <p class="text-sm text-slate-600">مناقشة مستقبل الوظائف في الشرق الأوسط: هل الذكاء الاصطناعي يهدد فرص الشباب؟ ما الوظائف الأكثر أماناً؟ وهل الشهادة أم المهارة أهم؟</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">الأسبوع 3: السكن والزواج والاستقرار</h4>
+                            <p class="text-sm text-slate-600">ربط البطالة وضعف الدخل بقرارات الحياة الكبرى: هل امتلاك منزل أصبح أصعب؟ كم يحتاج الزواج اليوم؟ وهل تأخر الاستقرار سببه الدخل أم الأسعار؟</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 mb-2">الأسبوع 4: الادخار والاستثمار</h4>
+                            <p class="text-sm text-slate-600">محتوى قابل للنقاش والمشاركة: هل الادخار ما زال ممكناً؟ لو وفرت 500 ريال شهرياً ماذا تحقق بعد 5 سنوات؟ وما أفضل قرار مالي للشباب؟</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-amber-50 border-r-4 border-brand-accent p-4 mb-6 rounded-lg">
+                        <strong class="text-amber-800"><i class="fa-solid fa-circle-question"></i> سؤال التجميع الأسبوعي:</strong>
+                        <p class="text-sm text-amber-800 mt-1 font-bold">لو عاد بك الزمن 10 سنوات.. ما القرار المالي أو المهني الذي كنت ستتخذه بشكل مختلف؟</p>
+                    </div>
+
+                    <h4 class="font-bold text-slate-800 mb-3 border-b pb-2"><i class="fa-regular fa-clock text-brand-secondary mr-2"></i> نموذج التشغيل اليومي (Timeline)</h4>
                     <div class="flex flex-wrap gap-3">
-                        <div class="bg-slate-800 p-3 rounded flex-1 min-w-[120px] text-center border-t-2 border-brand-primary">
-                            <span class="block text-brand-secondary font-bold text-sm mb-1">09:00 ص</span><span class="text-xs">حياة الوسط تشرح القضية</span>
+                        <div class="bg-slate-800 p-3 rounded-lg flex-1 min-w-[140px] text-center border-t-4 border-brand-primary shadow">
+                            <span class="block text-brand-secondary font-black text-sm mb-1">09:00 ص</span><span class="text-xs text-slate-300">حياة الوسط تطرح السؤال الرئيسي</span>
                         </div>
-                        <div class="bg-slate-800 p-3 rounded flex-1 min-w-[120px] text-center border-t-2 border-stone-500">
-                            <span class="block text-brand-secondary font-bold text-sm mb-1">11:00 ص</span><span class="text-xs">الأردن يضيف التاريخ</span>
+                        <div class="bg-slate-800 p-3 rounded-lg flex-1 min-w-[140px] text-center border-t-4 border-green-600 shadow">
+                            <span class="block text-brand-secondary font-black text-sm mb-1">11:00 ص</span><span class="text-xs text-slate-300">السعودية تعرض تكلفة المعيشة</span>
                         </div>
-                         <div class="bg-slate-800 p-3 rounded flex-1 min-w-[120px] text-center border-t-2 border-green-600">
-                            <span class="block text-brand-secondary font-bold text-sm mb-1">01:00 م</span><span class="text-xs">السعودية تربط بالتراث</span>
+                         <div class="bg-slate-800 p-3 rounded-lg flex-1 min-w-[140px] text-center border-t-4 border-emerald-500 shadow">
+                            <span class="block text-brand-secondary font-black text-sm mb-1">01:00 م</span><span class="text-xs text-slate-300">الإمارات تناقش المهارات والمستقبل</span>
                         </div>
-                         <div class="bg-slate-800 p-3 rounded flex-1 min-w-[120px] text-center border-t-2 border-red-600">
-                            <span class="block text-brand-secondary font-bold text-sm mb-1">03:00 م</span><span class="text-xs">مصر تربط بالمواطن</span>
+                         <div class="bg-slate-800 p-3 rounded-lg flex-1 min-w-[140px] text-center border-t-4 border-red-600 shadow">
+                            <span class="block text-brand-secondary font-black text-sm mb-1">03:00 م</span><span class="text-xs text-slate-300">مصر تربط الموضوع بحياة المواطن</span>
                         </div>
-                         <div class="bg-slate-800 p-3 rounded flex-1 min-w-[120px] text-center border-t-2 border-emerald-500">
-                            <span class="block text-brand-secondary font-bold text-sm mb-1">06:00 م</span><span class="text-xs">الإمارات تقدم الحلول</span>
+                         <div class="bg-slate-800 p-3 rounded-lg flex-1 min-w-[140px] text-center border-t-4 border-blue-600 shadow">
+                            <span class="block text-brand-secondary font-black text-sm mb-1">06:00 م</span><span class="text-xs text-slate-300">الكويت تعرض زاوية الإنفاق</span>
                         </div>
-                        <div class="bg-slate-800 p-3 rounded flex-1 min-w-[120px] text-center border-t-2 border-purple-500">
-                            <span class="block text-brand-secondary font-bold text-sm mb-1">09:00 م</span><span class="text-xs">لبنان يضيف البعد الإنساني</span>
+                        <div class="bg-slate-800 p-3 rounded-lg flex-1 min-w-[140px] text-center border-t-4 border-purple-500 shadow">
+                            <span class="block text-brand-secondary font-black text-sm mb-1">09:00 م</span><span class="text-xs text-slate-300">لبنان يضيف البعد الإنساني</span>
                         </div>
-                        <div class="bg-brand-primary p-3 rounded flex-1 min-w-[140px] text-center border-2 border-brand-secondary/50">
-                            <span class="block text-white font-bold text-sm mb-1">11:00 م</span><span class="text-xs font-bold">حياة المدينة تجمع النقاش</span>
+                        <div class="bg-brand-primary p-3 rounded-lg flex-1 min-w-[160px] text-center border-2 border-brand-secondary/50 shadow-lg">
+                            <span class="block text-white font-black text-sm mb-1">11:00 م</span><span class="text-xs font-bold text-blue-100">حياة الوسط تجمع النقاش</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- TAB 5: Interactive Homework & Print Control -->
-            <section id="homework" class="tab-content">
+            <section id="lab" class="tab-content">
                 <div class="mb-6 flex justify-between items-end flex-wrap gap-4 no-print">
                     <div>
-                        <h1 class="text-3xl font-extrabold text-brand-dark mb-2">التطبيق العملي (مختبر المحتوى)</h1>
-                        <p class="text-slate-600 text-lg">اختر دولتك، استكمل خطة القمع التسويقي واطبع الملف لتسليمه أو مذاكرته.</p>
+                        <h1 class="text-3xl font-extrabold text-brand-dark mb-2">مختبر التفاعل والمحتوى</h1>
+                        <p class="text-slate-600 text-lg">تطبيق تفاعلي شامل على ملف البطالة وسوق العمل، مع إرسال إجابات المتدرب مباشرة إلى بريد DAOLINE.</p>
                     </div>
-                    <!-- أزرار الطباعة المزدوجة -->
                     <div class="flex gap-2">
-                        <button onclick="printHomework()" class="bg-brand-primary hover:bg-blue-800 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 transition-colors font-bold shadow-md">
-                            <i class="fa-solid fa-print"></i> طباعة التطبيق للتسليم
+                        <button onclick="window.print()" class="bg-brand-primary hover:bg-blue-800 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 transition-colors font-bold shadow-md">
+                            <i class="fa-solid fa-print"></i> استخراج التطبيق كـ PDF
                         </button>
-                        <button onclick="printAll()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-5 py-2.5 rounded-lg flex items-center gap-2 transition-colors font-bold border border-slate-300">
-                            <i class="fa-solid fa-book-open"></i> طباعة المرفقات كاملة للمذاكرة
+                        <button onclick="printAll()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 px-5 py-2.5 rounded-lg flex items-center gap-2 transition-colors font-bold border border-slate-300 hidden md:flex">
+                            <i class="fa-solid fa-book-open"></i> طباعة المرفقات كاملة
                         </button>
                     </div>
                 </div>
 
-                <form id="homeworkForm" class="bg-white p-6 md:p-10 rounded-2xl shadow-md mb-6 print-container border border-slate-200 relative overflow-hidden">
+                <form id="homeworkForm" action="https://formsubmit.co/info@daolinedigital.com" method="POST" class="bg-white p-6 md:p-10 rounded-2xl shadow-md mb-6 print-container border border-slate-200 relative overflow-hidden">
+                    <input type="hidden" name="_subject" value="حل مشروع DAOLINE X 2026 - البطالة وسوق العمل">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://daolinedigital.com">
                     
                     <div class="flex flex-col md:flex-row justify-between items-center border-b-2 border-slate-200 pb-6 mb-8 gap-4">
                         <div class="flex items-center gap-1 font-sans">
@@ -724,7 +803,6 @@
                                 <span class="text-[0.7rem] font-bold tracking-widest text-black ml-1 uppercase mt-1">Social Media Agency</span>
                             </div>
                         </div>
-                        
                         <div class="text-center md:text-left dir-ltr">
                             <p class="font-bold text-slate-800 text-lg">By: Doaa Seleat</p>
                             <a href="https://daolinedigital.com" target="_blank" class="text-brand-daoline text-sm font-bold block mt-1 hover:underline">daolinedigital.com</a>
@@ -732,106 +810,161 @@
                     </div>
 
                     <div class="text-center mb-8">
-                        <h2 class="text-2xl font-bold text-brand-primary">مشروع تطبيقي: إدارة حساب (تويتر / X)</h2>
+                        <h2 class="text-2xl font-bold text-brand-primary">مشروع تطبيقي: نظام المحتوى (X 2026)</h2>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6 mb-8">
                         <div>
                             <label class="block text-sm font-bold text-slate-700 mb-2">اسم المتدرب</label>
-                            <input type="text" name="student_name" class="input-field border-slate-300" placeholder="اكتب اسمك الثلاثي...">
+                            <input type="text" name="student_name" class="input-field border-slate-300 bg-slate-50" placeholder="اكتب اسمك الثلاثي...">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-slate-700 mb-2">اختر العلامة الفرعية (الدولة)</label>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">العلامة الفرعية (تحديد الشخصية)</label>
                             <select name="brand_country" class="input-field border-slate-300 font-bold">
-                                <option value="" disabled selected>-- اختر دولتك من الـ 4 دول --</option>
-                                <option value="السعودية">السعودية</option>
-                                <option value="مصر">مصر</option>
-                                <option value="الإمارات">الإمارات</option>
-                                <option value="لبنان">لبنان</option>
+                                <option value="" disabled selected>-- اختر دولة التطبيق من شبكة الـ 22 دولة --</option>
+                                <option value="السعودية">السعودية — زاوية البطالة وسوق العمل</option>
+<option value="مصر">مصر — زاوية البطالة وسوق العمل</option>
+<option value="الإمارات">الإمارات — زاوية البطالة وسوق العمل</option>
+<option value="لبنان">لبنان — زاوية البطالة وسوق العمل</option>
+<option value="الأردن">الأردن — زاوية البطالة وسوق العمل</option>
+<option value="الكويت">الكويت — زاوية البطالة وسوق العمل</option>
+<option value="قطر">قطر — زاوية البطالة وسوق العمل</option>
+<option value="البحرين">البحرين — زاوية البطالة وسوق العمل</option>
+<option value="عُمان">عُمان — زاوية البطالة وسوق العمل</option>
+<option value="فلسطين">فلسطين — زاوية البطالة وسوق العمل</option>
+<option value="سوريا">سوريا — زاوية البطالة وسوق العمل</option>
+<option value="العراق">العراق — زاوية البطالة وسوق العمل</option>
+<option value="اليمن">اليمن — زاوية البطالة وسوق العمل</option>
+<option value="السودان">السودان — زاوية البطالة وسوق العمل</option>
+<option value="ليبيا">ليبيا — زاوية البطالة وسوق العمل</option>
+<option value="تونس">تونس — زاوية البطالة وسوق العمل</option>
+<option value="الجزائر">الجزائر — زاوية البطالة وسوق العمل</option>
+<option value="المغرب">المغرب — زاوية البطالة وسوق العمل</option>
+<option value="موريتانيا">موريتانيا — زاوية البطالة وسوق العمل</option>
+<option value="جيبوتي">جيبوتي — زاوية البطالة وسوق العمل</option>
+<option value="الصومال">الصومال — زاوية البطالة وسوق العمل</option>
+<option value="جزر القمر">جزر القمر — زاوية البطالة وسوق العمل</option>
                             </select>
                         </div>
                     </div>
 
+                    <!-- Workshop 1: Content Format Decision -->
                     <div class="mb-10 page-break-inside-avoid">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2"><i class="fa-solid fa-1 mr-2 text-brand-accent"></i> 1. الهوية والمحاور (Content Pillars)</h3>
-                        <p class="text-sm text-slate-500 mb-4">بناءً على الدولة التي اخترتها أعلاه، حدد نبرة الصوت والمحاور التي ستتحدث عنها طوال الشهر.</p>
-                        <div class="grid md:grid-cols-2 gap-4 mb-4">
-                            <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2">اكتب نبرة صوتك المختارة (Tone of Voice):</label>
-                                <input type="text" name="tone_of_voice" class="input-field" placeholder="مثال: ذكي، قريب من الناس، مباشر...">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2">الهدف الأساسي لحسابك (Main Goal):</label>
-                                <input type="text" name="main_goal" class="input-field" placeholder="مثال: ربط الشباب بالتراث، أو التوعية بالحلول...">
-                            </div>
+                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b-2 border-brand-primary/20 pb-2"><span class="text-brand-accent">1.</span> اختيار شكل المحتوى (Format Decision)</h3>
+                        <p class="text-sm text-slate-600 mb-4">بناءً على شجرة القرار (Decision Tree)، اختر الشكل الأنسب (Format) لكل هدف من الأهداف التالية:</p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse border border-slate-300 text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-300 p-3 text-right">الهدف الاستراتيجي</th>
+                                        <th class="border border-slate-300 p-3 text-right">اختيار الشكل (Format)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-slate-300 p-3 font-bold bg-white">1. تبسيط إحصائية معقدة عن البطالة</td>
+                                        <td class="border border-slate-300 p-3">
+                                            <select class="w-full p-2 outline-none border border-slate-200 rounded">
+                                                <option value="" disabled selected>-- اختر --</option>
+                                                <option>Single Post</option><option>Thread</option><option>Visual (Data Card)</option><option>Video</option><option>Article</option><option>Space</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 p-3 font-bold bg-white">2. شرح أسباب البطالة وتداعياتها الاجتماعية في 6 نقاط</td>
+                                        <td class="border border-slate-300 p-3">
+                                            <select class="w-full p-2 outline-none border border-slate-200 rounded">
+                                                <option value="" disabled selected>-- اختر --</option>
+                                                <option>Single Post</option><option>Thread</option><option>Visual</option><option>Video</option><option>Article</option><option>Space</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 p-3 font-bold bg-white">3. بناء نقاش حي مع الشباب وخبراء التوظيف</td>
+                                        <td class="border border-slate-300 p-3">
+                                            <select class="w-full p-2 outline-none border border-slate-200 rounded">
+                                                <option value="" disabled selected>-- اختر --</option>
+                                                <option>Single Post</option><option>Thread</option><option>Visual</option><option>Video</option><option>Article</option><option>Space</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="grid md:grid-cols-3 gap-4">
+                    </div>
+
+                    <!-- Workshop 2: Visual Extraction (The 5-Second Rule) -->
+                    <div class="mb-10 page-break-inside-avoid">
+                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b-2 border-brand-primary/20 pb-2"><span class="text-brand-accent">2.</span> مختبر الفيجوال (قاعدة الـ 5 ثواني)</h3>
+                        <p class="text-sm text-slate-600 mb-4">اقرأ الفقرة التالية عن البطالة، واستخرج منها <strong>فكرة واحدة فقط</strong> تصلح لعمل Visual Card سريع ومؤثر.</p>
+                        
+                        <div class="bg-slate-100 p-4 rounded-lg border-l-4 border-l-slate-400 mb-4 text-sm leading-relaxed">
+                            "أظهر تقرير اقتصادي حديث أن معدلات البطالة بين الشباب في بعض دول الشرق الأوسط ما زالت أعلى من المتوسط العالمي، بينما تتوسع الشركات في طلب مهارات رقمية جديدة. التقرير يشير إلى أن الفجوة لم تعد في عدد الخريجين فقط، بل في توافق المهارات مع احتياجات سوق العمل."
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2">المحور الأول (Pillar 1)</label>
-                                <input type="text" name="pillar_1" class="input-field" placeholder="الزاوية الأولى (مثال: التأثير الاقتصادي)">
+                                <label class="block text-sm font-bold text-slate-800 mb-2">نوع الفيجوال المناسب (Visual Type):</label>
+                                <select name="visual_type" class="input-field border-slate-300 mb-4">
+                                    <option value="" disabled selected>-- اختر نوع الكارت --</option>
+                                    <option>Data Card (رقم صادم)</option>
+                                    <option>Comparison (مقارنة)</option>
+                                    <option>Timeline (تسلسل زمني)</option>
+                                    <option>Quote Card (تصريح)</option>
+                                </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2">المحور الثاني (Pillar 2)</label>
-                                <input type="text" name="pillar_2" class="input-field" placeholder="الزاوية الثانية (مثال: التأثير الثقافي)">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-bold text-slate-700 mb-2">المحور الثالث (Pillar 3)</label>
-                                <input type="text" name="pillar_3" class="input-field" placeholder="الزاوية الثالثة (مثال: الشارع والناس)">
+                                <label class="block text-sm font-bold text-slate-800 mb-2">النص المكتوب داخل الكارت (بحد أقصى 10 كلمات):</label>
+                                <input type="text" name="visual_text" class="input-field border-slate-300" placeholder="اكتب الجملة القصيرة جداً هنا...">
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-10 page-break-inside-avoid">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2"><i class="fa-solid fa-2 mr-2 text-brand-accent"></i> 2. هندسة القمع التسويقي (تطبيق على أجندة يوليو)</h3>
-                        <p class="text-sm text-slate-500 mb-4">اكتب 3 تغريدات تخدم 3 أهداف مختلفة خلال الأسبوع الأول من يوليو 2026، متقمصاً شخصية دولتك.</p>
+                    <!-- Workshop 3: Content Ladder (One Idea -> 6 Formats) -->
+                    <div class="mb-10 page-break-before">
+                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b-2 border-brand-primary/20 pb-2"><span class="text-brand-accent">3.</span> سلم المحتوى (One Idea → 6 Formats)</h3>
+                        <p class="text-sm text-slate-600 mb-4">اخترنا لك قضية: <strong>"البطالة بين الشباب في الشرق الأوسط"</strong>. المطلوب ابتكار زاوية أو Hook لهذه القضية في كل شكل من الأشكال التالية:</p>
                         
-                        <div class="space-y-6">
-                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                <div class="flex justify-between items-center mb-3">
-                                    <h4 class="font-bold text-slate-800"><span class="bg-brand-primary text-white px-2 py-1 rounded text-xs ml-2">مرحلة الوعي</span> (3 يوليو: اليوم العالمي بدون بلاستيك)</h4>
-                                </div>
-                                <div class="tweet-input-container">
-                                    <textarea name="tweet_awareness" class="tweet-input" maxlength="280" placeholder="اكتب تغريدة توعوية تلفت الانتباه للمشكلة، واربطها ببيئة دولتك التي اخترتها..."></textarea>
-                                    <span class="char-counter">280</span>
-                                </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-col md:flex-row gap-4 items-start">
+                                <div class="w-full md:w-32 font-bold text-slate-800 bg-slate-100 p-2 rounded text-center shrink-0">Single Post</div>
+                                <input type="text" class="input-field w-full" placeholder="اكتب سؤالاً أو رأياً سريعاً لجذب الانتباه (Hook)...">
                             </div>
-
-                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                <div class="flex justify-between items-center mb-3">
-                                    <h4 class="font-bold text-slate-800"><span class="bg-brand-secondary text-white px-2 py-1 rounded text-xs ml-2">مرحلة التفاعل</span> (ذكريات الإجازة الصيفية)</h4>
-                                </div>
-                                <div class="tweet-input-container">
-                                    <textarea name="tweet_engagement" class="tweet-input" maxlength="280" placeholder="اكتب تغريدة مجتمعية خفيفة تنتهي بسؤال لجمهورك عن ذكريات الصيف (تطبيق قاعدة 70%)..."></textarea>
-                                    <span class="char-counter">280</span>
-                                </div>
+                            <div class="flex flex-col md:flex-row gap-4 items-start">
+                                <div class="w-full md:w-32 font-bold text-brand-primary bg-blue-50 p-2 rounded text-center shrink-0">Thread (Hook)</div>
+                                <input type="text" class="input-field w-full border-blue-200" placeholder="اكتب التغريدة الأولى (وعد القراءة) لثريد يشرح الموضوع...">
                             </div>
-
-                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                                <div class="flex justify-between items-center mb-3">
-                                    <h4 class="font-bold text-slate-800"><span class="bg-green-600 text-white px-2 py-1 rounded text-xs ml-2">مرحلة اتخاذ القرار</span> (تريند: موجات الحر)</h4>
-                                </div>
-                                <div class="tweet-input-container">
-                                    <textarea name="tweet_action" class="tweet-input" maxlength="280" placeholder="اكتب تغريدة تقدم حلًا سريعًا وتدعو المتابع لزيارة رابط تقرير مفصل..."></textarea>
-                                    <span class="char-counter">280</span>
-                                </div>
+                            <div class="flex flex-col md:flex-row gap-4 items-start">
+                                <div class="w-full md:w-32 font-bold text-teal-700 bg-teal-50 p-2 rounded text-center shrink-0">Visual Idea</div>
+                                <input type="text" class="input-field w-full border-teal-200" placeholder="اشرح فكرة الصورة (مثال: كارت مقارنة بين الوظائف في 2020 و 2026)...">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-4 items-start">
+                                <div class="w-full md:w-32 font-bold text-red-700 bg-red-50 p-2 rounded text-center shrink-0">Video Hook</div>
+                                <input type="text" class="input-field w-full border-red-200" placeholder="اكتب أول 3 ثواني سكريبت (Hook) لفيديو 60 ثانية...">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-4 items-start">
+                                <div class="w-full md:w-32 font-bold text-purple-700 bg-purple-50 p-2 rounded text-center shrink-0">Space Topic</div>
+                                <input type="text" class="input-field w-full border-purple-200" placeholder="اكتب عنواناً جذاباً لجلسة نقاش صوتية مع الخبراء...">
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!-- Workshop 4: Quote Tweet Test -->
                     <div class="mb-10 page-break-inside-avoid">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2"><i class="fa-solid fa-3 mr-2 text-brand-accent"></i> 3. اختبار النشر المتقاطع (Quote Tweet)</h3>
-                        <p class="text-sm text-slate-500 mb-4">قامت العلامة الأم بنشر التقرير المركزي التالي. قدم <strong>مقترحين مختلفين</strong> للرد بـ Quote Tweet بلسان <strong>دولتين مختلفتين</strong>.</p>
+                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b-2 border-brand-primary/20 pb-2"><span class="text-brand-accent">4.</span> اختبار النشر المتقاطع (Quote Tweet)</h3>
+                        <p class="text-sm text-slate-600 mb-6">قامت العلامة الأم (@hayat_almadinah) بنشر تقرير مركزي عن <strong>البطالة وسوق العمل</strong>. قدم <strong>مقترحين مختلفين</strong> للرد بـ Quote Tweet متقمصاً شخصية <strong>دولتين مختلفتين</strong>، مع الالتزام بأن تكون الزاوية كلها عن البطالة أو الوظائف أو المهارات أو الرواتب.</p>
                         
-                        <div class="tweet-card bg-white p-4 rounded-lg shadow-sm mb-6">
+                        <div class="tweet-card bg-white p-4 rounded-lg shadow-sm mb-6 border border-slate-200">
                             <div class="flex items-center gap-3 mb-2">
                                 <div class="w-10 h-10 bg-brand-dark text-white rounded-full flex items-center justify-center font-bold">H</div>
                                 <div>
-                                    <h4 class="font-bold text-sm text-slate-800">حياة المدينة <i class="fa-solid fa-circle-check text-brand-secondary"></i></h4>
-                                    <p class="text-xs text-slate-500 dir-ltr text-right">@hayat_almadinah</p>
+                                    <h4 class="font-bold text-sm text-slate-800">حياة الوسط <i class="fa-solid fa-circle-check text-brand-secondary"></i></h4>
+                                    <p class="text-xs text-slate-500 dir-ltr text-right">@hayat_alwasat</p>
                                 </div>
                             </div>
                             <p class="text-slate-800 font-readex text-lg leading-relaxed">
-                                "تقرير منتصف 2026: بسبب التغيرات المناخية والاقتصادية، تتغير عادات السفر للشباب العربي. الاتجاه الآن نحو السياحة البيئية الداخلية واكتشاف معالم بلدانهم بدلًا من السفر التقليدي الخارجي."
+                                "تقرير منتصف 2026: البطالة بين الشباب لم تعد مجرد نقص في الوظائف، بل فجوة بين ما يتعلمه الخريجون وما يطلبه سوق العمل. المهارات الرقمية، التدريب العملي، والقدرة على التكيف أصبحت جزءاً أساسياً من فرصة التوظيف."
                             </p>
                         </div>
                         
@@ -840,14 +973,14 @@
                                 <label class="block text-sm font-bold text-slate-800">المقترح الأول للرد (اختر الدولة):</label>
                                 <select name="qt_country_1" class="input-field border-brand-secondary/50 text-sm py-1 px-2 w-full md:w-auto font-bold bg-white">
                                     <option value="" disabled selected>-- اختر الدولة للرد --</option>
-                                    <option value="السعودية">السعودية</option>
-                                    <option value="مصر">مصر</option>
-                                    <option value="الإمارات">الإمارات</option>
-                                    <option value="لبنان">لبنان</option>
+                                    <option value="السعودية">السعودية (الراوي التراثي)</option>
+                                    <option value="مصر">مصر (المثقف الشعبي)</option>
+                                    <option value="الإمارات">الإمارات (المستقبلي)</option>
+                                    <option value="لبنان">لبنان (الراوي الثقافي)</option>
                                 </select>
                             </div>
                             <div class="tweet-input-container">
-                                <textarea name="qt_text_1" class="tweet-input" maxlength="280" placeholder="اكتب المقترح الأول للـ Quote Tweet بلسان الدولة المختارة..."></textarea>
+                                <textarea name="qt_text_1" class="tweet-input" maxlength="280" placeholder="اكتب Quote Tweet عن البطالة وسوق العمل بلسان الدولة المختارة، مع سؤال للجمهور بحد أقصى 280 حرفاً..."></textarea>
                                 <span class="char-counter">280</span>
                             </div>
                         </div>
@@ -857,75 +990,117 @@
                                 <label class="block text-sm font-bold text-slate-800">المقترح الثاني للرد (دولة أخرى):</label>
                                 <select name="qt_country_2" class="input-field border-emerald-500/50 text-sm py-1 px-2 w-full md:w-auto font-bold bg-white">
                                     <option value="" disabled selected>-- اختر الدولة للرد --</option>
-                                    <option value="السعودية">السعودية</option>
-                                    <option value="مصر">مصر</option>
-                                    <option value="الإمارات">الإمارات</option>
-                                    <option value="لبنان">لبنان</option>
+                                    <option value="السعودية">السعودية (الراوي التراثي)</option>
+                                    <option value="مصر">مصر (المثقف الشعبي)</option>
+                                    <option value="الإمارات">الإمارات (المستقبلي)</option>
+                                    <option value="لبنان">لبنان (الراوي الثقافي)</option>
                                 </select>
                             </div>
                             <div class="tweet-input-container">
-                                <textarea name="qt_text_2" class="tweet-input" maxlength="280" placeholder="اكتب المقترح الثاني للـ Quote Tweet بلسان الدولة المختلفة..."></textarea>
+                                <textarea name="qt_text_2" class="tweet-input" maxlength="280" placeholder="اكتب Quote Tweet ثانياً عن البطالة من زاوية دولة مختلفة، مع سؤال واضح للجمهور بحد أقصى 280 حرفاً..."></textarea>
                                 <span class="char-counter">280</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-10 page-break-inside-avoid">
-                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b pb-2"><i class="fa-solid fa-pen-nib mr-2 text-brand-accent"></i> 4. تحدي تغيير النبرة (إعادة الصياغة)</h3>
-                        <p class="text-sm text-slate-500 mb-4">إليك هذه التغريدة المكتوبة بلغة عشوائية. أعد صياغتها بالكامل بـ 4 طرق مختلفة لتناسب النبرة والشخصية الرسمية لكل دولة من الدول الأربع.</p>
+                    <div class="mb-10 page-break-before">
+                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b-2 border-brand-primary/20 pb-2"><span class="text-brand-accent">5.</span> تحدي تغيير النبرة (إعادة الصياغة)</h3>
+                        <p class="text-sm text-slate-500 mb-4">إليك هذه التغريدة المكتوبة بلغة عشوائية عن <strong>البطالة والذكاء الاصطناعي</strong>. المطلوب إعادة صياغة نفس الفكرة بـ <strong>4 نبرات رسمية مختلفة</strong> لتمثل الدول الأربعة بشكل احترافي، دون تغيير الفكرة الأساسية: الخوف من البطالة، تغير الوظائف، والحاجة للتطوير.</p>
                         
-                        <div class="bg-red-50 border border-red-200 p-5 rounded-xl shadow-sm mb-8 relative mt-6">
-                            <span class="absolute -top-3 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">التغريدة العشوائية</span>
+                        <div class="bg-red-50 border border-red-200 p-5 rounded-xl shadow-sm mb-6 relative mt-6 text-center">
+                            <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow">التغريدة العشوائية عن البطالة</span>
                             <p class="text-slate-800 font-readex text-lg mt-2 leading-relaxed">
-                                "بصراحة كده الذكاء الاصطناعي ده هيقعدنا كلنا في البيت، الشغلانات كلها بتطير والواحد مبقاش عارف يطور من نفسه إزاي في الزحمة دي! لازم نلاقي حل."
+                                "بصراحة كده البطالة بتزيد والذكاء الاصطناعي داخل يغير شكل الشغل كله. الشغلانات بتقل، والواحد مبقاش عارف يطور نفسه إزاي وسط الزحمة دي. لازم نلاقي حل."
                             </p>
                         </div>
 
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <!-- Box 1: KSA -->
-                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
-                                <h4 class="font-bold text-green-700 mb-3 text-sm flex items-center gap-2">بلسان: السعودية (الراوي التراثي)</h4>
+                        <div class="bg-blue-50 border-r-4 border-brand-primary p-4 mb-5 rounded-lg text-sm text-slate-700">
+                            <strong class="text-brand-primary">توجيهات الحل:</strong>
+                            <span>كل صياغة بحد أقصى 280 حرفاً، تبدأ من زاوية الدولة، وتذكر كلمة البطالة أو سوق العمل بوضوح، وتنتهي بسؤال أو دعوة للتفكير.</span>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6 bg-slate-50 border border-slate-200 p-5 rounded-xl">
+                            <!-- Saudi Arabia -->
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                                <h4 class="font-bold text-green-700 text-sm mb-2 flex justify-between items-center">
+                                    <span><i class="fa-solid fa-pen-nib mr-1"></i> بلسان السعودية:</span>
+                                    <span class="bg-green-100 text-green-800 text-[10px] px-2 py-0.5 rounded">الراوي التراثي</span>
+                                </h4>
                                 <div class="tweet-input-container">
-                                    <textarea name="rewrite_ksa" class="tweet-input text-sm" maxlength="280" placeholder="اكتب التغريدة بالنبرة السعودية..."></textarea>
+                                    <textarea name="rewrite_ksa" class="tweet-input border-green-200 text-sm min-h-[100px]" maxlength="280" placeholder="أعد الصياغة هنا بحد أقصى 280 حرفاً، مع ذكر البطالة أو سوق العمل بوضوح..."></textarea>
                                     <span class="char-counter">280</span>
                                 </div>
+                            </div>
+                            <!-- Egypt -->
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                                <h4 class="font-bold text-red-600 text-sm mb-2 flex justify-between items-center">
+                                    <span><i class="fa-solid fa-pen-nib mr-1"></i> بلسان مصر:</span>
+                                    <span class="bg-red-100 text-red-800 text-[10px] px-2 py-0.5 rounded">المثقف الشعبي</span>
+                                </h4>
+                                <div class="tweet-input-container">
+                                    <textarea name="rewrite_egypt" class="tweet-input border-red-200 text-sm min-h-[100px]" maxlength="280" placeholder="أعد الصياغة هنا بحد أقصى 280 حرفاً، مع ذكر البطالة أو سوق العمل بوضوح..."></textarea>
+                                    <span class="char-counter">280</span>
+                                </div>
+                            </div>
+                            <!-- UAE -->
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                                <h4 class="font-bold text-emerald-600 text-sm mb-2 flex justify-between items-center">
+                                    <span><i class="fa-solid fa-pen-nib mr-1"></i> بلسان الإمارات:</span>
+                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded">المستقبلي</span>
+                                </h4>
+                                <div class="tweet-input-container">
+                                    <textarea name="rewrite_uae" class="tweet-input border-emerald-200 text-sm min-h-[100px]" maxlength="280" placeholder="أعد الصياغة هنا بحد أقصى 280 حرفاً، مع ذكر البطالة أو سوق العمل بوضوح..."></textarea>
+                                    <span class="char-counter">280</span>
+                                </div>
+                            </div>
+                            <!-- Lebanon -->
+                            <div class="bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                                <h4 class="font-bold text-purple-600 text-sm mb-2 flex justify-between items-center">
+                                    <span><i class="fa-solid fa-pen-nib mr-1"></i> بلسان لبنان:</span>
+                                    <span class="bg-purple-100 text-purple-800 text-[10px] px-2 py-0.5 rounded">الراوي الثقافي</span>
+                                </h4>
+                                <div class="tweet-input-container">
+                                    <textarea name="rewrite_leb" class="tweet-input border-purple-200 text-sm min-h-[100px]" maxlength="280" placeholder="أعد الصياغة هنا بحد أقصى 280 حرفاً، مع ذكر البطالة أو سوق العمل بوضوح..."></textarea>
+                                    <span class="char-counter">280</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-10 page-break-before">
+                        <h3 class="text-xl font-bold text-brand-primary mb-4 border-b-2 border-brand-primary/20 pb-2"><span class="text-brand-accent">6.</span> تخطيط التقويم (قاعدة 60/20/20) - ملف البطالة</h3>
+                        <p class="text-sm text-slate-500 mb-4">صمم خطة محتوى مبدئية لملف <strong>البطالة وسوق العمل في الشرق الأوسط</strong> بناءً على قاعدة التوزيع الاستراتيجي: 60% محتوى ثابت، 20% موسمي، 20% تفاعل حي. يجب أن تكون كل الأفكار مرتبطة صراحةً بالبطالة أو فرص العمل أو الرواتب أو المهارات.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                                <h4 class="font-bold text-blue-800 mb-2">60% المحتوى الأساسي المجدول (Evergreen)</h4>
+                                <textarea name="plan_60" class="input-field border-blue-300 min-h-[80px]" placeholder="اكتب 6 أفكار ثابتة عن البطالة: أسباب البطالة، فجوة المهارات، حلول التوظيف، فروق الرواتب، قصص شباب، وظائف مطلوبة..."></textarea>
                             </div>
                             
-                            <!-- Box 2: Egypt -->
-                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
-                                <h4 class="font-bold text-red-700 mb-3 text-sm flex items-center gap-2">بلسان: مصر (المثقف الشعبي)</h4>
-                                <div class="tweet-input-container">
-                                    <textarea name="rewrite_egypt" class="tweet-input text-sm" maxlength="280" placeholder="اكتب التغريدة بالنبرة المصرية..."></textarea>
-                                    <span class="char-counter">280</span>
-                                </div>
+                            <div class="bg-brand-secondary/10 p-4 rounded-xl border border-brand-secondary/30">
+                                <h4 class="font-bold text-brand-primary mb-2">20% المحتوى الموسمي والمناسبات (شهر 7)</h4>
+                                <textarea name="plan_20_seasonal" class="input-field border-brand-secondary/50 min-h-[80px]" placeholder="اكتب 3 أفكار لشهر 7 تربط البطالة بمواسم التخرج، التدريب الصيفي، البحث عن أول وظيفة، قرارات الرواتب، أو السفر للعمل..."></textarea>
                             </div>
-
-                            <!-- Box 3: UAE -->
-                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
-                                <h4 class="font-bold text-emerald-600 mb-3 text-sm flex items-center gap-2">بلسان: الإمارات (المستقبلي)</h4>
-                                <div class="tweet-input-container">
-                                    <textarea name="rewrite_uae" class="tweet-input text-sm" maxlength="280" placeholder="اكتب التغريدة بالنبرة الإماراتية..."></textarea>
-                                    <span class="char-counter">280</span>
-                                </div>
-                            </div>
-
-                            <!-- Box 4: Lebanon -->
-                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl">
-                                <h4 class="font-bold text-purple-600 mb-3 text-sm flex items-center gap-2">بلسان: لبنان (الراوي الثقافي)</h4>
-                                <div class="tweet-input-container">
-                                    <textarea name="rewrite_lebanon" class="tweet-input text-sm" maxlength="280" placeholder="اكتب التغريدة بالنبرة اللبنانية..."></textarea>
-                                    <span class="char-counter">280</span>
-                                </div>
+                            
+                            <div class="bg-brand-accent/10 p-4 rounded-xl border border-brand-accent/30">
+                                <h4 class="font-bold text-orange-800 mb-2">20% التفاعل الحي (Live & Trends)</h4>
+                                <textarea name="plan_20_live" class="input-field border-brand-accent/50 min-h-[80px]" placeholder="اكتب 3 أفكار تفاعل حي عن البطالة: استطلاع رواتب، سؤال للباحثين عن عمل، Space مع خبير توظيف، أو تجميع قصص الجمهور..."></textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="text-center mt-8 pt-6 border-t border-slate-200 no-print">
-                        <button type="button" onclick="window.print()" class="bg-brand-primary hover:bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl transition-all w-full md:w-auto inline-flex items-center justify-center gap-3">
-                            <i class="fa-solid fa-file-pdf text-2xl"></i> استخراج التطبيق كملف PDF للتسليم
-                        </button>
-                        <p class="text-xs text-slate-500 mt-3">قم بحفظ الملف بصيغة PDF وأرسله للمدرب للتقييم.</p>
+                        <div class="flex flex-col md:flex-row gap-3 justify-center">
+                            <button type="submit" class="bg-brand-daoline hover:opacity-90 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl transition-all w-full md:w-auto inline-flex items-center justify-center gap-3">
+                                <i class="fa-solid fa-paper-plane text-2xl"></i> إرسال الحل مباشرة إلى info@daolinedigital.com
+                            </button>
+                            <button type="button" onclick="window.print()" class="bg-brand-primary hover:bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl transition-all w-full md:w-auto inline-flex items-center justify-center gap-3">
+                                <i class="fa-solid fa-file-pdf text-2xl"></i> استخراج PDF احتياطي
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-3">الإرسال يعمل عبر FormSubmit. عند أول استخدام قد يحتاج تأكيد بريد info@daolinedigital.com مرة واحدة فقط.</p>
                     </div>
+
                 </form>
             </section>
 
@@ -933,13 +1108,12 @@
     </div>
 
     <script>
-        // Tab switching logic
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('bg-brand-primary', 'text-white', 'border', 'border-brand-secondary/30');
                 btn.classList.add('text-slate-300', 'hover:bg-slate-800');
-                if(btn.dataset.target === 'homework') {
+                if(btn.dataset.target === 'lab') {
                      btn.classList.add('border', 'border-brand-secondary/30', 'mt-4');
                 }
             });
@@ -952,32 +1126,23 @@
             }
         }
 
-        // --- Print Logic for Dual Modes ---
         function printAll() {
-            // Remove hw-only class, add all-mode class
-            document.body.classList.remove('print-hw-mode');
             document.body.classList.add('print-all-mode');
-            
+            document.body.classList.remove('print-lab-mode');
             window.print();
-            
-            // Revert back to default after printing dialog closes
-            setTimeout(() => { 
-                document.body.classList.remove('print-all-mode'); 
-                document.body.classList.add('print-hw-mode');
-            }, 500);
+            setTimeout(() => { document.body.classList.remove('print-all-mode'); }, 500);
         }
 
-        function printHomework() {
-            switchTab('homework'); // Ensure homework tab is active
-            
-            // Remove all-mode class, add hw-only class
-            document.body.classList.remove('print-all-mode');
-            document.body.classList.add('print-hw-mode');
-            
-            window.print();
-        }
+        // Overriding the default print to be Lab Only unless "Print All" is clicked
+        window.onbeforeprint = function() {
+            if(!document.body.classList.contains('print-all-mode')) {
+                document.body.classList.add('print-lab-mode');
+            }
+        };
+        window.onafterprint = function() {
+            document.body.classList.remove('print-lab-mode');
+        };
 
-        // Twitter Character Counter Auto-resize logic
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.tweet-input').forEach(textarea => {
                 textarea.addEventListener('input', function() {
