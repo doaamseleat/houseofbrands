@@ -7,94 +7,110 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', primary: '#1e3a8a', secondary: '#38bdf8', daoline: '#d214a1' } } } } }
-    </script>
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #f1f5f9; }
-        .tab-content { display: none; } .tab-content.active { display: block; }
-        .slide-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 2rem; border-top: 4px solid #1e3a8a; }
-        .tweet-input { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 0.5rem; outline: none; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .slide-card { background: white; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 2rem; border-top: 4px solid #1e3a8a; }
+        .wm-item { position: fixed; bottom: 20px; left: 20px; font-weight: 900; color: #d214a1; opacity: 0.05; font-size: 2rem; pointer-events: none; }
+        
+        textarea { width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 0.4rem; font-size: 0.8rem; }
+        
         @media print {
             .no-print { display: none !important; }
             body { background: white !important; }
             .tab-content { display: block !important; page-break-after: always; }
-            #full-manual { display: block !important; }
+            main { padding: 0 !important; }
+            textarea { border: 1px solid #000 !important; }
         }
-        .wm-item { position: fixed; bottom: 20px; left: 20px; font-weight: 900; color: #d214a1; opacity: 0.1; font-size: 2rem; pointer-events: none; }
     </style>
 </head>
-<body class="bg-slate-50 flex">
+<body class="bg-slate-100 flex">
 
     <!-- Sidebar -->
     <aside class="w-64 bg-slate-900 text-white min-h-screen p-6 no-print sticky top-0">
-        <div class="text-center mb-10"><h2 class="text-2xl font-black">DAOLINE</h2><p class="text-xs uppercase text-slate-400">Content System Manual</p></div>
-        <nav class="space-y-4">
-            <button onclick="showTab('home')" class="block w-full text-right p-3 hover:bg-slate-800 rounded">المنظومة والاستراتيجية</button>
-            <button onclick="showTab('visuals')" class="block w-full text-right p-3 hover:bg-slate-800 rounded">قاموس الفيجوال</button>
-            <button onclick="showTab('countries')" class="block w-full text-right p-3 hover:bg-slate-800 rounded">الـ 22 دولة (الشخصيات)</button>
-            <button onclick="showTab('lab')" class="block w-full text-right p-3 bg-brand-primary rounded font-bold">التطبيق العملي والمختبر</button>
+        <div class="text-center mb-10 border-b border-slate-700 pb-6">
+            <h2 class="text-2xl font-black">DAOLINE</h2>
+            <p class="text-xs text-slate-400">Content System Manual</p>
+        </div>
+        <nav class="space-y-2">
+            <button onclick="showTab('system')" class="w-full text-right p-3 hover:bg-slate-800 rounded font-bold">المنظومة والأشكال</button>
+            <button onclick="showTab('countries')" class="w-full text-right p-3 hover:bg-slate-800 rounded font-bold">هيكلة الـ 22 دولة (مختبر)</button>
+            <button onclick="showTab('cross')" class="w-full text-right p-3 hover:bg-slate-800 rounded font-bold">خطة يونيو والتقاطع</button>
+            <button onclick="showTab('lab')" class="w-full text-right p-3 bg-blue-700 rounded font-bold">التطبيق العملي (يوليو)</button>
         </nav>
+        <div class="mt-auto pt-10 text-center text-[10px] text-slate-500">By Doaa Seleat | 01005479564</div>
     </aside>
 
     <main class="flex-1 p-10">
         <div class="wm-item">DAOLINE | 01005479564</div>
 
-        <!-- Home -->
-        <section id="home" class="tab-content active">
-            <h1 class="text-4xl font-black mb-8">المنظومة والأشكال</h1>
-            <div class="slide-card">
-                <h3 class="text-xl font-bold mb-4">التغريدة تفتح الباب، المنظومة تبني الثقة</h3>
-                <p>الاستراتيجية ليست مجرد تغريدات متفرقة، بل هي Content System متكامل يربط الـ Post بالثريد بالفيديو، وكل ذلك يصب في هدف استراتيجي واحد.</p>
+        <!-- 1. System -->
+        <section id="system" class="tab-content active">
+            <h1 class="text-3xl font-black mb-6">المنظومة والأشكال</h1>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="slide-card"><h3 class="font-bold mb-2">Single Post</h3><p>جذب انتباه (Hook)</p></div>
+                <div class="slide-card"><h3 class="font-bold mb-2">Thread</h3><p>شرح وتسلسل</p></div>
+                <div class="slide-card"><h3 class="font-bold mb-2">Visual</h3><p>تبسيط وحفظ</p></div>
             </div>
-            <!-- Matrix Table -->
-            <table class="bg-white shadow rounded-lg overflow-hidden">
-                <thead><tr class="bg-slate-200"><th class="p-3">شكل المحتوى</th><th class="p-3">الوظيفة</th></tr></thead>
-                <tbody>
-                    <tr><td class="p-3 font-bold">Single Post</td><td class="p-3">جذب انتباه (Hook)</td></tr>
-                    <tr><td class="p-3 font-bold">Thread</td><td class="p-3">شرح متسلسل</td></tr>
-                    <tr><td class="p-3 font-bold">Visual</td><td class="p-3">تبسيط رقم/معلومة</td></tr>
-                </tbody>
-            </table>
         </section>
 
-        <!-- Lab/Application -->
-        <section id="lab" class="tab-content">
-            <div class="flex justify-between items-center mb-8">
-                <h1 class="text-3xl font-black">التطبيق العملي (يوليو 2026)</h1>
-                <div class="flex gap-2">
-                    <button onclick="window.print()" class="no-print bg-green-600 text-white px-6 py-2 rounded font-bold">استخراج التطبيق PDF</button>
+        <!-- 2. Countries (The 22 Grid with Application) -->
+        <section id="countries" class="tab-content">
+            <h1 class="text-3xl font-black mb-6">هيكلة الـ 22 دولة (تطبيق عملي)</h1>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Loop for 22 countries (represented here) -->
+                <div class="p-4 bg-white border border-slate-200 rounded shadow">
+                    <h3 class="font-bold text-blue-900 mb-1">السعودية</h3>
+                    <p class="text-xs mb-2">النبرة: الراوي التراثي (حكيم، فخور).</p>
+                    <textarea placeholder="طبق: اكتب زاوية المحتوى المقترحة..." class="tweet-input"></textarea>
                 </div>
+                <div class="p-4 bg-white border border-slate-200 rounded shadow">
+                    <h3 class="font-bold text-blue-900 mb-1">مصر</h3>
+                    <p class="text-xs mb-2">النبرة: المثقف الشعبي (ذكي، قريب).</p>
+                    <textarea placeholder="طبق: اكتب زاوية المحتوى المقترحة..." class="tweet-input"></textarea>
+                </div>
+                <!-- Add similar blocks for all 22 -->
             </div>
+        </section>
 
+        <!-- 3. Cross Promo -->
+        <section id="cross" class="tab-content">
+            <h1 class="text-3xl font-black mb-6">الترويج المتقاطع (نموذج يونيو)</h1>
+            <div class="bg-white p-6 shadow rounded">
+                <p>شعار الشهر: "كيف يؤثر ما يحدث في العالم على حياة المواطن العربي؟"</p>
+            </div>
+        </section>
+
+        <!-- 4. Final Lab -->
+        <section id="lab" class="tab-content">
+            <div class="flex justify-between items-center mb-6 no-print">
+                <h1 class="text-3xl font-black">التطبيق العملي (يوليو 2026)</h1>
+                <button onclick="window.print()" class="bg-green-600 text-white px-6 py-2 rounded font-bold">طباعة المرفقات كاملة</button>
+            </div>
+            
             <form class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
-                <div class="border-b mb-6 pb-4">
-                    <h2 class="text-2xl font-bold">مشروع تطبيقي: إدارة حساب (تويتر / X)</h2>
-                    <p class="text-sm text-slate-500">By: Doaa Seleat | 01005479564</p>
+                <div class="border-b mb-6 pb-4 flex justify-between items-center">
+                    <div><h2 class="text-xl font-bold">مشروع تطبيقي: إدارة محتوى تويتر</h2><p class="text-xs text-slate-500">By: Doaa Seleat | 01005479564</p></div>
+                    <div class="text-brand-daoline font-black text-2xl">DAOLINE</div>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <input type="text" placeholder="اسم المتدرب" class="input-field">
-                    <select class="input-field">
-                        <option>اختر الدولة: السعودية، مصر، الإمارات، لبنان</option>
-                    </select>
-                </div>
-
-                <!-- Rewrite Challenge -->
-                <h3 class="font-bold text-lg mb-4">4. تحدي تغيير النبرة (أعد الصياغة بـ 4 طرق)</h3>
-                <div class="bg-red-50 p-4 border border-red-200 rounded-lg mb-6 italic">"بصراحة كده الذكاء الاصطناعي ده هيقعدنا كلنا في البيت، الشغلانات كلها بتطير والواحد مبقاش عارف يطور من نفسه إزاي في الزحمة دي! لازم نلاقي حل."</div>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <textarea class="tweet-input" placeholder="السعودية (الراوي التراثي)"></textarea>
-                    <textarea class="tweet-input" placeholder="مصر (المثقف الشعبي)"></textarea>
-                    <textarea class="tweet-input" placeholder="الإمارات (المستقبلي)"></textarea>
-                    <textarea class="tweet-input" placeholder="لبنان (الراوي الثقافي)"></textarea>
+                <input type="text" placeholder="اسم المتدرب" class="input-field mb-4">
+                <select class="input-field mb-4"><option>اختر الدولة (سعودية، مصر، إمارات، لبنان)</option></select>
+                
+                <h3 class="font-bold mb-2 text-brand-primary">1. تحدي النبرة (4 دول)</h3>
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <textarea class="tweet-input" placeholder="السعودية"></textarea>
+                    <textarea class="tweet-input" placeholder="مصر"></textarea>
+                    <textarea class="tweet-input" placeholder="الإمارات"></textarea>
+                    <textarea class="tweet-input" placeholder="لبنان"></textarea>
                 </div>
             </form>
         </section>
     </main>
 
     <script>
-        function switchTab(id) {
+        function showTab(id) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
