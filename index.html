@@ -777,7 +777,7 @@
                 <div class="mb-6 flex justify-between items-end flex-wrap gap-4 no-print">
                     <div>
                         <h1 class="text-3xl font-extrabold text-brand-dark mb-2">مختبر التفاعل والمحتوى</h1>
-                        <p class="text-slate-600 text-lg">تطبيق تفاعلي شامل على ملف البطالة وسوق العمل، مع إرسال إجابات المتدرب مباشرة إلى بريد DAOLINE.</p>
+                        <p class="text-slate-600 text-lg">تطبيق تفاعلي شامل على ملف البطالة وسوق العمل، يملؤه المتدرب ثم يستخرجه كـ PDF ويرسله للمدرب.</p>
                     </div>
                     <div class="flex gap-2">
                         <button onclick="window.print()" class="bg-brand-primary hover:bg-blue-800 text-white px-5 py-2.5 rounded-lg flex items-center gap-2 transition-colors font-bold shadow-md">
@@ -789,11 +789,7 @@
                     </div>
                 </div>
 
-                <form id="homeworkForm" action="https://formsubmit.co/info@daolinedigital.com" method="POST" class="bg-white p-6 md:p-10 rounded-2xl shadow-md mb-6 print-container border border-slate-200 relative overflow-hidden">
-                    <input type="hidden" name="_subject" value="حل مشروع DAOLINE X 2026 - البطالة وسوق العمل">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://daolinedigital.com">
+                <form id="homeworkForm" class="bg-white p-6 md:p-10 rounded-2xl shadow-md mb-6 print-container border border-slate-200 relative overflow-hidden">
                     
                     <div class="flex flex-col md:flex-row justify-between items-center border-b-2 border-slate-200 pb-6 mb-8 gap-4">
                         <div class="flex items-center gap-1 font-sans">
@@ -1090,15 +1086,10 @@
                     </div>
 
                     <div class="text-center mt-8 pt-6 border-t border-slate-200 no-print">
-                        <div class="flex flex-col md:flex-row gap-3 justify-center">
-                            <button type="submit" class="bg-brand-daoline hover:opacity-90 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl transition-all w-full md:w-auto inline-flex items-center justify-center gap-3">
-                                <i class="fa-solid fa-paper-plane text-2xl"></i> إرسال الحل مباشرة إلى info@daolinedigital.com
-                            </button>
-                            <button type="button" onclick="window.print()" class="bg-brand-primary hover:bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl transition-all w-full md:w-auto inline-flex items-center justify-center gap-3">
-                                <i class="fa-solid fa-file-pdf text-2xl"></i> استخراج PDF احتياطي
-                            </button>
-                        </div>
-                        <p class="text-xs text-slate-500 mt-3">الإرسال يعمل عبر FormSubmit. عند أول استخدام قد يحتاج تأكيد بريد info@daolinedigital.com مرة واحدة فقط.</p>
+                        <button type="button" onclick="window.print()" class="bg-brand-primary hover:bg-blue-800 text-white px-8 py-4 rounded-lg text-lg font-bold shadow-xl transition-all w-full md:w-auto inline-flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-file-pdf text-2xl"></i> استخراج الحل كـ PDF
+                        </button>
+                        <p class="text-xs text-slate-500 mt-3">بعد الانتهاء من الإجابات، يستخرج المتدرب الملف PDF ويرسله للمدرب بالطريقة المتفق عليها.</p>
                     </div>
 
                 </form>
